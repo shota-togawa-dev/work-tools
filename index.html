@@ -1,0 +1,1049 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BURBERRY Client Advisor Recruit</title>
+  <meta name="description" content="BURBERRY｜東京都内店舗 クライアントアドバイザー採用LP">
+  <style>
+    :root {
+      --ink: #171310;
+      --muted: #665a50;
+      --paper: #f7f1e7;
+      --ivory: #fbf8f2;
+      --camel: #b99a69;
+      --sand: #d8c3a5;
+      --wine: #4d1419;
+      --navy: #101a2b;
+      --line: rgba(23, 19, 16, .18);
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--ivory);
+      font-family: "Hiragino Mincho ProN", "Yu Mincho", "YuMincho", "Times New Roman", serif;
+      line-height: 1.9;
+      letter-spacing: 0;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .site-header {
+      position: absolute;
+      inset: 0 0 auto;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 68px;
+      padding: 16px 20px;
+      background: rgba(251, 248, 242, .88);
+      border-bottom: 1px solid rgba(23, 19, 16, .08);
+      backdrop-filter: blur(18px);
+    }
+
+    .brand-mark {
+      display: grid;
+      gap: 0;
+      font-size: clamp(24px, 8vw, 34px);
+      line-height: .92;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+
+    .brand-mark span:last-child {
+      color: var(--wine);
+      font-size: .58em;
+      letter-spacing: .12em;
+      margin-top: 8px;
+    }
+
+    .nav {
+      display: none;
+      align-items: center;
+      gap: clamp(18px, 2.8vw, 38px);
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .nav a {
+      padding-block: 8px;
+    }
+
+    .entry-link {
+      border-bottom: 1px solid var(--ink);
+    }
+
+    .hero {
+      min-height: auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      align-items: stretch;
+      padding-top: 68px;
+      background:
+        linear-gradient(90deg, rgba(251,248,242,.94), rgba(251,248,242,.78) 48%, rgba(251,248,242,.18)),
+        var(--paper);
+      overflow: hidden;
+    }
+
+    .hero-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 34px 20px 40px;
+      position: relative;
+    }
+
+    .kicker {
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size: 12px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--wine);
+      margin-bottom: 18px;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin: 0;
+    }
+
+    h1 {
+      font-size: clamp(46px, 14vw, 66px);
+      line-height: .92;
+      font-weight: 400;
+      text-transform: uppercase;
+    }
+
+    .hero-subtitle {
+      margin-top: 24px;
+      max-width: 670px;
+      font-size: clamp(22px, 7vw, 31px);
+      line-height: 1.5;
+      font-weight: 500;
+    }
+
+    .hero-text {
+      max-width: 650px;
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .hero-actions {
+      display: grid;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 54px;
+      padding: 0 28px;
+      width: 100%;
+      border: 1px solid var(--ink);
+      background: var(--ink);
+      color: var(--ivory);
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .button.secondary {
+      background: transparent;
+      color: var(--ink);
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: min(420px, 58vh);
+      order: -1;
+      background:
+        linear-gradient(90deg, rgba(23,19,16,.14) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(23,19,16,.14) 1px, transparent 1px),
+        linear-gradient(90deg, transparent 0 18%, rgba(77,20,25,.26) 18% 22%, transparent 22% 48%, rgba(16,26,43,.18) 48% 51%, transparent 51% 74%, rgba(185,154,105,.28) 74% 77%, transparent 77%),
+        linear-gradient(0deg, transparent 0 20%, rgba(77,20,25,.22) 20% 24%, transparent 24% 49%, rgba(16,26,43,.20) 49% 52%, transparent 52% 73%, rgba(185,154,105,.30) 73% 77%, transparent 77%),
+        #c9ad82;
+      background-size: 92px 92px, 92px 92px, 100% 100%, 100% 100%, auto;
+      isolation: isolate;
+    }
+
+    .hero-visual::before {
+      content: "";
+      position: absolute;
+      inset: 12% 8% 10% -16%;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.50), rgba(255,255,255,.04)),
+        radial-gradient(circle at 32% 20%, rgba(255,255,255,.42), transparent 22%),
+        linear-gradient(120deg, rgba(23,19,16,.88), rgba(23,19,16,.46));
+      clip-path: polygon(20% 0, 100% 0, 84% 100%, 0 100%);
+      z-index: -1;
+    }
+
+    .vertical-note {
+      position: absolute;
+      right: 18px;
+      bottom: 26px;
+      writing-mode: vertical-rl;
+      color: var(--ivory);
+      font-size: 22px;
+      line-height: 1.8;
+      text-shadow: 0 2px 18px rgba(0, 0, 0, .24);
+    }
+
+    .section {
+      padding: 48px 20px;
+    }
+
+    .section-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 22px;
+      align-items: start;
+      margin-bottom: 28px;
+    }
+
+    .section-title {
+      font-size: clamp(40px, 13vw, 62px);
+      line-height: .94;
+      font-weight: 400;
+      text-transform: uppercase;
+    }
+
+    .section-title small {
+      display: block;
+      margin-top: 12px;
+      color: var(--wine);
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size: 12px;
+      letter-spacing: .16em;
+    }
+
+    .lead {
+      font-size: clamp(18px, 5.2vw, 24px);
+      line-height: 1.7;
+    }
+
+    .muted {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .highlights {
+      display: grid;
+      grid-template-columns: 1fr;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .highlight {
+      padding: 18px 0 20px;
+      min-height: auto;
+      border-right: 0;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255,255,255,.22);
+    }
+
+    .highlight:last-child {
+      border-bottom: 0;
+    }
+
+    .label {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 3px 10px;
+      background: var(--ink);
+      color: var(--ivory);
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size: 11px;
+      letter-spacing: .08em;
+      line-height: 1.5;
+      text-transform: uppercase;
+    }
+
+    .highlight strong {
+      display: block;
+      font-size: clamp(21px, 6vw, 28px);
+      line-height: 1.38;
+      font-weight: 500;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .image-panel {
+      min-height: 320px;
+      position: relative;
+      background:
+        linear-gradient(90deg, transparent 0 10%, rgba(77,20,25,.32) 10% 13%, transparent 13% 45%, rgba(16,26,43,.26) 45% 48%, transparent 48% 78%, rgba(185,154,105,.38) 78% 82%, transparent 82%),
+        linear-gradient(0deg, transparent 0 14%, rgba(77,20,25,.26) 14% 17%, transparent 17% 54%, rgba(16,26,43,.22) 54% 57%, transparent 57% 83%, rgba(185,154,105,.36) 83% 87%, transparent 87%),
+        linear-gradient(135deg, rgba(255,255,255,.5), rgba(255,255,255,0)),
+        var(--sand);
+      overflow: hidden;
+    }
+
+    .image-panel::after {
+      content: "";
+      position: absolute;
+      inset: 18%;
+      border: 1px solid rgba(23, 19, 16, .45);
+      box-shadow: 24px 24px 0 rgba(77, 20, 25, .92);
+    }
+
+    .copy-block {
+      display: grid;
+      gap: 18px;
+    }
+
+    .copy-block h3 {
+      font-size: clamp(30px, 9vw, 44px);
+      line-height: 1.3;
+      font-weight: 400;
+    }
+
+    .text-columns {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1px;
+      margin-top: 34px;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+
+    .text-card {
+      background: rgba(255, 255, 255, .26);
+      padding: 24px 22px;
+    }
+
+    .text-card h3 {
+      margin-bottom: 16px;
+      color: var(--wine);
+      font-size: clamp(22px, 2.4vw, 31px);
+      font-weight: 500;
+      line-height: 1.45;
+    }
+
+    .text-card p,
+    .text-card li {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .text-card ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .text-card li {
+      padding: 12px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .facts {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+
+    .fact {
+      background: var(--ivory);
+      color: var(--ink) !important;
+      -webkit-text-fill-color: var(--ink);
+      padding: 18px 22px;
+      min-height: auto;
+    }
+
+    .fact * {
+      color: inherit;
+    }
+
+    .fact,
+    .benefit {
+      position: relative;
+    }
+
+    .fact span::before,
+    .benefit h3::before {
+      content: "";
+      display: inline-block;
+      width: 22px;
+      height: 22px;
+      margin-right: .5em;
+      vertical-align: -5px;
+      color: var(--wine);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      opacity: .9;
+    }
+
+    .icon-salary span::before {
+      background-image: url("data:image/svg+xml,%3Csvg width='34' height='34' viewBox='0 0 34 34' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='5' y='9' width='24' height='16' rx='1' stroke='%234d1419' stroke-width='1.6'/%3E%3Cpath d='M10 14H20M10 19H15' stroke='%234d1419' stroke-width='1.6' stroke-linecap='round'/%3E%3Ccircle cx='24' cy='18' r='2.4' stroke='%23b99a69' stroke-width='1.5'/%3E%3C/svg%3E");
+    }
+
+    .icon-time span::before {
+      background-image: url("data:image/svg+xml,%3Csvg width='34' height='34' viewBox='0 0 34 34' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='17' cy='17' r='10.5' stroke='%234d1419' stroke-width='1.6'/%3E%3Cpath d='M17 11.5V17L21 20' stroke='%234d1419' stroke-width='1.6' stroke-linecap='round'/%3E%3Cpath d='M8 8L5.5 10.5M26 8L28.5 10.5' stroke='%23b99a69' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+    }
+
+    .icon-holiday span::before {
+      background-image: url("data:image/svg+xml,%3Csvg width='34' height='34' viewBox='0 0 34 34' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='7' y='8' width='20' height='19' rx='1' stroke='%234d1419' stroke-width='1.6'/%3E%3Cpath d='M11 6V10M23 6V10M7 14H27' stroke='%234d1419' stroke-width='1.6' stroke-linecap='round'/%3E%3Cpath d='M12 19H15M19 19H22M12 23H15' stroke='%23b99a69' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E");
+    }
+
+    .icon-location span::before {
+      background-image: url("data:image/svg+xml,%3Csvg width='34' height='34' viewBox='0 0 34 34' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M17 29S26 21.3 26 14.6C26 9.6 22 6 17 6S8 9.6 8 14.6C8 21.3 17 29 17 29Z' stroke='%234d1419' stroke-width='1.6'/%3E%3Ccircle cx='17' cy='15' r='3.2' stroke='%23b99a69' stroke-width='1.5'/%3E%3C/svg%3E");
+    }
+
+    .icon-reward h3::before {
+      background-image: url("data:image/svg+xml,%3Csvg width='34' height='34' viewBox='0 0 34 34' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M17 6L20.1 12.2L27 13.2L22 18.1L23.2 25L17 21.7L10.8 25L12 18.1L7 13.2L13.9 12.2L17 6Z' stroke='%234d1419' stroke-width='1.6' stroke-linejoin='round'/%3E%3Cpath d='M17 11.5V18' stroke='%23b99a69' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+    }
+
+    .icon-leave h3::before {
+      background-image: url("data:image/svg+xml,%3Csvg width='34' height='34' viewBox='0 0 34 34' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 25C11.5 15 19.5 9.5 27 8C26 15.8 20.6 23.4 10 27' stroke='%234d1419' stroke-width='1.6' stroke-linecap='round'/%3E%3Cpath d='M10 24C14 22 18 18 21 13' stroke='%23b99a69' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+    }
+
+    .icon-life h3::before {
+      background-image: url("data:image/svg+xml,%3Csvg width='34' height='34' viewBox='0 0 34 34' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M17 27S8 21.8 8 14.2C8 10.6 10.4 8 13.6 8C15.4 8 16.4 8.8 17 9.8C17.6 8.8 18.6 8 20.4 8C23.6 8 26 10.6 26 14.2C26 21.8 17 27 17 27Z' stroke='%234d1419' stroke-width='1.6'/%3E%3Cpath d='M11 17H15L16.3 14L18.4 20L20 17H23' stroke='%23b99a69' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    }
+
+    .icon-growth h3::before {
+      background-image: url("data:image/svg+xml,%3Csvg width='34' height='34' viewBox='0 0 34 34' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 25H26' stroke='%234d1419' stroke-width='1.6' stroke-linecap='round'/%3E%3Cpath d='M11 23V17M17 23V12M23 23V8' stroke='%234d1419' stroke-width='1.6' stroke-linecap='round'/%3E%3Cpath d='M11 17L17 12L23 8' stroke='%23b99a69' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+    }
+
+    .icon-secure h3::before {
+      background-image: url("data:image/svg+xml,%3Csvg width='34' height='34' viewBox='0 0 34 34' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M17 6L26 9V15.5C26 21.6 22.3 25.9 17 28C11.7 25.9 8 21.6 8 15.5V9L17 6Z' stroke='%234d1419' stroke-width='1.6' stroke-linejoin='round'/%3E%3Cpath d='M13 17L16 20L21.5 14' stroke='%23b99a69' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    }
+
+    .icon-uniform h3::before {
+      background-image: url("data:image/svg+xml,%3Csvg width='34' height='34' viewBox='0 0 34 34' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 7L17 10L22 7L27 12L24 16V27H10V16L7 12L12 7Z' stroke='%234d1419' stroke-width='1.6' stroke-linejoin='round'/%3E%3Cpath d='M14 9C14.5 11.5 15.7 13 17 13C18.3 13 19.5 11.5 20 9' stroke='%23b99a69' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+    }
+
+    .fact span {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--wine);
+      -webkit-text-fill-color: var(--wine);
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size: 11px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .fact b {
+      color: var(--ink);
+      -webkit-text-fill-color: var(--ink);
+      font-size: clamp(18px, 5.2vw, 24px);
+      font-weight: 500;
+      line-height: 1.45;
+    }
+
+    .dark {
+      background: var(--ink);
+      color: var(--ivory);
+    }
+
+    .dark .section-title small,
+    .dark .kicker,
+    .dark .muted {
+      color: #d6c1a1;
+    }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+      background: transparent;
+      border-top: 1px solid rgba(251,248,242,.24);
+      align-items: start;
+    }
+
+    .step {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      align-content: center;
+      min-height: auto;
+      padding: 14px 0;
+      border: 0;
+      border-bottom: 1px solid rgba(251,248,242,.24);
+      background: transparent;
+    }
+
+    .step:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      display: none;
+      background: rgba(251,248,242,.55);
+    }
+
+    .step:not(:last-child)::before {
+      content: "";
+      position: absolute;
+      display: none;
+    }
+
+    .step span {
+      color: var(--camel);
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size: 12px;
+      letter-spacing: .14em;
+    }
+
+    .step h3 {
+      margin-top: 0;
+      font-size: clamp(16px, 4.8vw, 21px);
+      font-weight: 400;
+      line-height: 1.45;
+    }
+
+    .career-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 22px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .career-list li {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      min-height: 38px;
+      padding: 8px 28px 8px 12px;
+      border: 1px solid rgba(251,248,242,.24);
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size: 12px;
+      letter-spacing: .04em;
+      line-height: 1.45;
+    }
+
+    .career-list li:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      width: 7px;
+      height: 7px;
+      border-top: 1px solid var(--camel);
+      border-right: 1px solid var(--camel);
+      transform: translateY(-50%) rotate(45deg);
+    }
+
+    .benefit-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .benefit {
+      border: 1px solid var(--line);
+      padding: 22px 24px;
+      min-height: auto;
+      background: rgba(255,255,255,.25);
+    }
+
+    .benefit h3 {
+      margin-bottom: 14px;
+      font-size: 22px;
+      font-weight: 500;
+    }
+
+    .requirements {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+
+    .req-block {
+      background: var(--ivory);
+      padding: 28px 24px;
+    }
+
+    .req-block ul {
+      margin: 20px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .req-block li {
+      padding: 14px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .cta {
+      text-align: center;
+      background:
+        linear-gradient(90deg, transparent 0 18%, rgba(77,20,25,.14) 18% 21%, transparent 21% 52%, rgba(16,26,43,.12) 52% 55%, transparent 55% 78%, rgba(185,154,105,.18) 78% 82%, transparent 82%),
+        var(--paper);
+    }
+
+    .cta h2 {
+      font-size: clamp(42px, 14vw, 70px);
+      line-height: .98;
+      font-weight: 400;
+      text-transform: uppercase;
+    }
+
+    .cta p {
+      max-width: 720px;
+      margin: 24px auto 0;
+      color: var(--muted);
+    }
+
+    .footer {
+      padding: 30px 20px;
+      background: var(--ink);
+      color: rgba(251,248,242,.72);
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    @media (min-width: 720px) {
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      .button {
+        width: auto;
+      }
+
+      .highlights,
+      .benefit-grid,
+      .facts,
+      .text-columns {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .highlight {
+        padding: 24px;
+        border-right: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .highlight:nth-child(2n) {
+        border-right: 0;
+      }
+
+      .timeline {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (min-width: 921px) {
+      .site-header {
+        position: fixed;
+        min-height: 76px;
+        padding: 18px clamp(18px, 4vw, 54px);
+      }
+
+      .brand-mark {
+        font-size: clamp(24px, 3.2vw, 42px);
+      }
+
+      .nav {
+        display: flex;
+      }
+
+      .hero {
+        min-height: 100vh;
+        grid-template-columns: minmax(0, 1fr) minmax(360px, 47vw);
+        padding-top: 76px;
+      }
+
+      .hero-visual {
+        min-height: 620px;
+        order: 0;
+      }
+
+      .hero-copy {
+        padding: clamp(80px, 12vw, 150px) clamp(22px, 8vw, 120px);
+      }
+
+      h1 {
+        font-size: clamp(52px, 8.4vw, 116px);
+        line-height: .9;
+      }
+
+      .hero-subtitle {
+        margin-top: 34px;
+        font-size: clamp(24px, 3.2vw, 42px);
+      }
+
+      .hero-text {
+        margin-top: 24px;
+      }
+
+      .hero-actions {
+        margin-top: 44px;
+      }
+
+      .vertical-note {
+        right: clamp(22px, 4vw, 64px);
+        bottom: clamp(30px, 7vw, 94px);
+        font-size: clamp(24px, 3vw, 40px);
+      }
+
+      .section {
+        padding: clamp(56px, 8vw, 104px) clamp(22px, 5vw, 64px);
+      }
+
+      .section-head {
+        grid-template-columns: minmax(180px, 340px) minmax(0, 1fr);
+        gap: clamp(28px, 6vw, 76px);
+        margin-bottom: clamp(28px, 4.5vw, 56px);
+      }
+
+      .section-title {
+        font-size: clamp(42px, 6.6vw, 86px);
+      }
+
+      .lead {
+        font-size: clamp(19px, 2.2vw, 28px);
+      }
+
+      .highlights {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .highlight,
+      .highlight:nth-child(2n) {
+        padding: clamp(26px, 4vw, 48px);
+        min-height: 190px;
+        border-right: 1px solid var(--line);
+        border-bottom: 0;
+      }
+
+      .highlight:last-child {
+        border-right: 0;
+      }
+
+      .split {
+        grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr);
+        gap: clamp(36px, 7vw, 94px);
+      }
+
+      .image-panel {
+        min-height: 520px;
+      }
+
+      .copy-block h3 {
+        font-size: clamp(30px, 4vw, 56px);
+      }
+
+      .text-columns,
+      .benefit-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .facts {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .requirements {
+        grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
+      }
+
+      .timeline {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 28px;
+      }
+
+      .step {
+        min-height: 132px;
+        padding: 22px;
+        display: grid;
+      }
+
+      .step:not(:last-child)::after {
+        display: block;
+        top: 50%;
+        right: -23px;
+        width: 16px;
+        height: 1px;
+      }
+
+      .step:not(:last-child)::before {
+        display: block;
+        top: calc(50% - 4px);
+        right: -23px;
+        width: 8px;
+        height: 8px;
+        border-top: 1px solid rgba(251,248,242,.55);
+        border-right: 1px solid rgba(251,248,242,.55);
+        transform: rotate(45deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand-mark" href="#top" aria-label="BURBERRY Recruit">
+      <span>BURBERRY</span>
+      <span>Recruit</span>
+    </a>
+    <nav class="nav" aria-label="ページ内ナビゲーション">
+      <a href="#about">About</a>
+      <a href="#work">Work</a>
+      <a href="#career">Career</a>
+      <a href="#benefits">Benefits</a>
+      <a href="#requirements">Requirements</a>
+      <a class="entry-link" href="https://www.t-w-c.net/detail/302890/">Entry</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="kicker">Client Advisor / Tokyo Stores</p>
+        <h1 id="hero-title">Burberry<br>Recruit</h1>
+        <p class="hero-subtitle">新生BURBERRYを、東京の店舗からともに創る。</p>
+        <p class="hero-text">イギリスを代表するラグジュアリーブランド「BURBERRY」。東京都内店舗で、ブランドを代表するアンバサダーとしてお客様に最高品質のサービスを届けるクライアントアドバイザーを募集します。</p>
+        <div class="hero-actions">
+          <a class="button" href="https://www.t-w-c.net/detail/302890/">応募画面へ進む</a>
+          <a class="button secondary" href="#requirements">募集要項を見る</a>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <p class="vertical-note">心に残る一着を、<br>心に残る接客で。</p>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="section-inner">
+        <div class="section-head">
+          <h2 class="section-title">Message<small>採用メッセージ</small></h2>
+          <div>
+            <p class="lead">160年以上にわたって築かれてきたブランドの価値を、さらに高めていくために。</p>
+            <p class="muted" style="margin-top: 20px;">製品を販売するだけではなく、バーバリーの世界観をお客様に伝え、お客様の立場に立って考え行動する。クライアントアドバイザー一人ひとりのサービスが、ブランドの未来をつくります。</p>
+          </div>
+        </div>
+        <div class="highlights">
+          <div class="highlight">
+            <span class="label">Point 01</span>
+            <strong>東京都内店舗でのポテンシャル採用</strong>
+          </div>
+          <div class="highlight">
+            <span class="label">Point 02</span>
+            <strong>ラグジュアリー・アパレル経験を活かせる環境</strong>
+          </div>
+          <div class="highlight">
+            <span class="label">Point 03</span>
+            <strong>年間休日122日以上・有給取得実績85%以上</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="work">
+      <div class="section-inner split">
+        <div class="image-panel" aria-hidden="true"></div>
+        <div class="copy-block">
+          <p class="kicker">Role</p>
+          <h3>接客のプロとして、ブランド体験を完成させる。</h3>
+          <p class="muted">クライアントアドバイザーは、お客様とブランドが出会う最前線に立つ仕事です。路面店・百貨店を含む東京都内店舗で、接客販売を中心に、一人ひとりの目的や気分に寄り添いながら、長く愛される一着との出会いをつくります。</p>
+          <p class="muted">販売だけで完結せず、ディスプレイ装飾、店舗・顧客管理、売上・在庫管理、各種レポート作成まで担当。店舗の空気を整え、顧客との関係を育て、ブランド体験の品質を日々高めていくポジションです。</p>
+        </div>
+      </div>
+      <div class="section-inner">
+        <div class="text-columns">
+          <div class="text-card">
+            <h3>仕事内容</h3>
+            <p>接客販売を主軸に、商品の魅力や背景を丁寧に伝えます。購入の瞬間だけでなく、来店前後のコミュニケーションも含めて、お客様との信頼関係を積み重ねていきます。</p>
+          </div>
+          <div class="text-card">
+            <h3>応募資格</h3>
+            <ul>
+              <li>アパレル販売または接遇経験をお持ちの方</li>
+              <li>ラグジュアリーブランド、百貨店、外商経験のある方歓迎</li>
+              <li>中国語・英語での接客販売経験も活かせます</li>
+            </ul>
+          </div>
+          <div class="text-card">
+            <h3>求める人物像</h3>
+            <p>目の前のお客様に深く向き合い、相手の立場で考えられる方。ブランドの世界観を自分の言葉で伝え、チームとともに新生BURBERRYの価値を育てていける方を歓迎します。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark" id="career">
+      <div class="section-inner">
+        <div class="section-head">
+          <h2 class="section-title">Career<small>多彩なキャリアパス</small></h2>
+          <div>
+            <p class="lead">販売員として経験を積んだ先に、専門性を深める道も、マネジメントに進む道もあります。</p>
+            <p class="muted" style="margin-top: 14px;">接客・販売の卓越したプロフェッショナルを目指すシニアクライアントアドバイザー、チーム育成や売場運営を担うデパートメントマネージャー、店舗全体をリードするストアマネージャーへ。さらに、本社職へ異動するチャンスもあります。</p>
+            <ul class="career-list" aria-label="キャリアステップ">
+              <li>Client Advisor</li>
+              <li>Senior Client Advisor</li>
+              <li>Department Manager</li>
+              <li>Store Manager / Head Office</li>
+            </ul>
+          </div>
+        </div>
+        <div class="facts">
+          <div class="fact icon-salary">
+            <span>Salary</span>
+            <b>年収 305万円〜600万円</b>
+          </div>
+          <div class="fact icon-time">
+            <span>Work Time</span>
+            <b>9:30〜20:30のシフト制<br>実働7時間30分</b>
+          </div>
+          <div class="fact icon-holiday">
+            <span>Holiday</span>
+            <b>年間休日122日以上</b>
+          </div>
+          <div class="fact icon-location">
+            <span>Location</span>
+            <b>銀座・新宿・渋谷など<br>東京都内店舗</b>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="benefits">
+      <div class="section-inner">
+        <div class="section-head">
+          <h2 class="section-title">Benefits<small>待遇・福利厚生</small></h2>
+          <p class="lead">長く、健やかにキャリアを育てるための制度を整えています。</p>
+        </div>
+        <div class="benefit-grid">
+          <div class="benefit icon-reward">
+            <h3>報酬制度</h3>
+            <p class="muted">業績賞与年2回、昇給年1回、インセンティブ制度、時間外勤務手当あり。</p>
+          </div>
+          <div class="benefit icon-leave">
+            <h3>休暇制度</h3>
+            <p class="muted">月10日公休、夏季・冬季休暇、年次有給休暇、結婚休暇、永年勤続休暇など。</p>
+          </div>
+          <div class="benefit icon-life">
+            <h3>ライフサポート</h3>
+            <p class="muted">産前産後休暇、介護休暇、ペアレンタルリーブ、時短勤務制度。</p>
+          </div>
+          <div class="benefit icon-growth">
+            <h3>成長支援</h3>
+            <p class="muted">入社導入研修、販売スキル研修、店舗マネージメント研修、メンターによるOJT。</p>
+          </div>
+          <div class="benefit icon-secure">
+            <h3>安心の制度</h3>
+            <p class="muted">社会保険完備、退職金制度、定期健康診断、メンタルヘルスケアサポート。</p>
+          </div>
+          <div class="benefit icon-uniform">
+            <h3>制服・社販</h3>
+            <p class="muted">制服貸与、クリーニング代サポート、社販制度あり。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="requirements">
+      <div class="section-inner">
+        <div class="section-head">
+          <h2 class="section-title">Requirements<small>募集要項</small></h2>
+          <p class="lead">ラグジュアリーブランド、アパレル販売、百貨店での接客経験をお持ちの方を歓迎します。</p>
+        </div>
+        <div class="requirements">
+          <div class="req-block">
+            <span class="label">Position</span>
+            <h3>ショップ販売<br>契約社員</h3>
+            <p class="muted" style="margin-top: 18px;">試用期間3ヶ月。給与・待遇に差異はありません。勤務地は銀座路面店、銀座三越、新宿伊勢丹、渋谷西武など、希望を考慮して決定します。</p>
+          </div>
+          <div class="req-block">
+            <span class="label">Profile</span>
+            <ul>
+              <li>ラグジュアリーブランドまたはアパレル販売の経験を活かしたい方</li>
+              <li>百貨店での外商販売など、深い顧客対応の経験をお持ちの方</li>
+              <li>お客様との長いコミュニケーションを大切にし、信頼を育てられる方</li>
+              <li>中国語・英語での接客販売など、語学力をサービスに活かしたい方</li>
+              <li>160年以上続くブランドの価値を理解し、新しいBURBERRYを一緒に創りたい方</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark">
+      <div class="section-inner">
+        <div class="section-head">
+          <h2 class="section-title">Flow<small>選考の流れ</small></h2>
+          <p class="lead">Web履歴書による書類選考後、面接を経て内定となります。通過された方にのみ、次の選考についてご連絡します。</p>
+        </div>
+        <div class="timeline">
+          <div class="step">
+            <span>01</span>
+            <h3>Web履歴書にて書類選考</h3>
+          </div>
+          <div class="step">
+            <span>02</span>
+            <h3>一次面接<br>人事</h3>
+          </div>
+          <div class="step">
+            <span>03</span>
+            <h3>二次面接<br>店舗マネージャー</h3>
+          </div>
+          <div class="step">
+            <span>04</span>
+            <h3>内定</h3>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cta">
+      <div class="section-inner">
+        <p class="kicker">Entry</p>
+        <h2>Join<br>Burberry</h2>
+        <p>あなたのおもてなしで、ブランドのファンをたくさんつくってください。東京の店舗から、新しいBURBERRYの価値をともに届けましょう。</p>
+        <div class="hero-actions" style="justify-content: center;">
+          <a class="button" href="https://www.t-w-c.net/detail/302890/">応募画面へ進む</a>
+          <a class="button secondary" href="#top">ページ上部へ戻る</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>BURBERRY Recruit Landing Page / Source: TWC Job Detail</p>
+  </footer>
+</body>
+</html>

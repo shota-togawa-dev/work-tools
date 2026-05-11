@@ -1,0 +1,780 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>POLO RALPH LAUREN Recruit</title>
+  <meta name="description" content="POLO RALPH LAUREN MEN'S 高島屋新宿店 接客・販売スタッフ採用LP">
+  <style>
+    :root {
+      --navy: #071f3d;
+      --deep: #06152b;
+      --cream: #f7f2e8;
+      --paper: #fbf8f1;
+      --white: #fffdf8;
+      --ink: #172033;
+      --muted: #667083;
+      --red: #7b1f2b;
+      --green: #173f35;
+      --tan: #b69062;
+      --line: rgba(23, 32, 51, .16);
+      --max: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: "Hiragino Mincho ProN", "Yu Mincho", YuMincho, "Times New Roman", serif;
+      line-height: 1.85;
+      letter-spacing: 0;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    p,
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+    }
+
+    .top-ribbon {
+      min-height: 42px;
+      display: grid;
+      place-items: center;
+      padding: 9px 18px;
+      background: var(--navy);
+      color: var(--white);
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .04em;
+      text-align: center;
+    }
+
+    .site-header {
+      position: absolute;
+      inset: 42px 0 auto;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 22px;
+      color: var(--white);
+    }
+
+    .brand {
+      font-size: clamp(20px, 5.8vw, 30px);
+      line-height: 1;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+      text-shadow: 0 2px 18px rgba(0, 0, 0, .34);
+    }
+
+    .nav {
+      display: none;
+      gap: 28px;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .hero {
+      min-height: 100svh;
+      display: grid;
+      align-items: end;
+      position: relative;
+      overflow: hidden;
+      padding: 118px 22px 54px;
+      color: var(--white);
+      background:
+        linear-gradient(180deg, rgba(6, 21, 43, .20), rgba(6, 21, 43, .72)),
+        radial-gradient(circle at 28% 24%, rgba(255, 255, 255, .34), transparent 22%),
+        linear-gradient(115deg, transparent 0 24%, rgba(6, 21, 43, .42) 24% 42%, transparent 42%),
+        repeating-linear-gradient(90deg, rgba(255, 255, 255, .06) 0 1px, transparent 1px 78px),
+        linear-gradient(135deg, #22334b, #9e8b70 48%, #173f35);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 12% -18% 8% 38%;
+      background:
+        linear-gradient(90deg, rgba(123, 31, 43, .34) 0 12%, transparent 12% 42%, rgba(246, 242, 232, .26) 42% 50%, transparent 50%),
+        linear-gradient(0deg, rgba(7, 31, 61, .28) 0 18%, transparent 18% 46%, rgba(182, 144, 98, .34) 46% 55%, transparent 55%),
+        rgba(247, 242, 232, .16);
+      border: 1px solid rgba(255, 255, 255, .22);
+      transform: rotate(-8deg);
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 1;
+      max-width: 720px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .kicker {
+      margin-bottom: 18px;
+      color: currentColor;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: clamp(52px, 15vw, 86px);
+      line-height: .93;
+      font-weight: 400;
+      text-transform: uppercase;
+    }
+
+    .hero-lead {
+      margin-top: 26px;
+      font-size: clamp(22px, 6.3vw, 34px);
+      line-height: 1.55;
+    }
+
+    .hero-text {
+      margin-top: 18px;
+      color: rgba(255, 253, 248, .88);
+      font-size: 15px;
+    }
+
+    .actions {
+      display: grid;
+      gap: 12px;
+      margin-top: 34px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0 24px;
+      border: 1px solid currentColor;
+      background: var(--white);
+      color: var(--navy);
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .button.secondary {
+      background: transparent;
+      color: var(--white);
+    }
+
+    .section {
+      padding: 54px 22px;
+    }
+
+    .section.dark {
+      background: var(--deep);
+      color: var(--white);
+    }
+
+    .section.green {
+      background: var(--green);
+      color: var(--white);
+    }
+
+    .section-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+
+    .section-head {
+      display: grid;
+      gap: 18px;
+      margin-bottom: 30px;
+    }
+
+    .section-title {
+      font-size: clamp(42px, 12vw, 70px);
+      line-height: .96;
+      font-weight: 400;
+      text-transform: uppercase;
+    }
+
+    .section-title small {
+      display: block;
+      margin-top: 12px;
+      color: var(--red);
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .14em;
+    }
+
+    .dark .section-title small,
+    .green .section-title small,
+    .dark .muted,
+    .green .muted {
+      color: #d9c8aa;
+    }
+
+    .lead {
+      font-size: clamp(19px, 5.5vw, 27px);
+      line-height: 1.7;
+    }
+
+    .muted {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .feature-list {
+      display: grid;
+      gap: 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .feature {
+      padding: 18px 0 20px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .feature:last-child {
+      border-bottom: 0;
+    }
+
+    .label {
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      margin-bottom: 10px;
+      padding: 2px 10px;
+      background: var(--navy);
+      color: var(--white);
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size: 11px;
+      letter-spacing: .1em;
+      line-height: 1.4;
+      text-transform: uppercase;
+    }
+
+    .feature strong {
+      display: block;
+      font-size: clamp(21px, 5.8vw, 30px);
+      line-height: 1.36;
+      font-weight: 500;
+    }
+
+    .split {
+      display: grid;
+      gap: 30px;
+    }
+
+    .visual-panel {
+      min-height: 330px;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 18% 22%, rgba(255,255,255,.42), transparent 18%),
+        linear-gradient(90deg, transparent 0 18%, rgba(123,31,43,.28) 18% 23%, transparent 23% 50%, rgba(7,31,61,.30) 50% 54%, transparent 54% 78%, rgba(182,144,98,.34) 78% 83%, transparent 83%),
+        linear-gradient(0deg, transparent 0 20%, rgba(7,31,61,.30) 20% 25%, transparent 25% 50%, rgba(182,144,98,.34) 50% 56%, transparent 56%),
+        linear-gradient(135deg, #e5d5bb, #61738c);
+    }
+
+    .visual-panel::after {
+      content: "POLO";
+      position: absolute;
+      left: 24px;
+      bottom: 18px;
+      color: rgba(255, 253, 248, .86);
+      font-size: clamp(54px, 16vw, 100px);
+      line-height: .8;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .copy-block {
+      display: grid;
+      gap: 18px;
+      align-content: center;
+    }
+
+    .copy-block h3 {
+      font-size: clamp(30px, 8.5vw, 50px);
+      line-height: 1.28;
+      font-weight: 400;
+    }
+
+    .detail-grid {
+      display: grid;
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+
+    .detail {
+      background: var(--white);
+      padding: 20px 22px;
+      color: var(--ink);
+    }
+
+    .detail span,
+    .benefit h3::before,
+    .detail span::before {
+      display: inline-block;
+      vertical-align: -4px;
+    }
+
+    .detail span {
+      margin-bottom: 8px;
+      color: var(--red);
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .detail span::before,
+    .benefit h3::before {
+      content: "";
+      width: 20px;
+      height: 20px;
+      margin-right: .5em;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+    }
+
+    .icon-pay span::before,
+    .icon-benefit h3::before {
+      background-image: url("data:image/svg+xml,%3Csvg width='28' height='28' viewBox='0 0 28 28' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='4' y='8' width='20' height='13' rx='1' stroke='%237b1f2b' stroke-width='1.4'/%3E%3Cpath d='M8 12H16M8 16H12' stroke='%237b1f2b' stroke-width='1.4' stroke-linecap='round'/%3E%3Ccircle cx='20' cy='15' r='2' stroke='%23b69062' stroke-width='1.3'/%3E%3C/svg%3E");
+    }
+
+    .icon-contract span::before {
+      background-image: url("data:image/svg+xml,%3Csvg width='28' height='28' viewBox='0 0 28 28' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 4H18L22 8V24H8V4Z' stroke='%237b1f2b' stroke-width='1.4'/%3E%3Cpath d='M18 4V9H22M11 14H18M11 18H17' stroke='%23b69062' stroke-width='1.3' stroke-linecap='round'/%3E%3C/svg%3E");
+    }
+
+    .icon-time span::before {
+      background-image: url("data:image/svg+xml,%3Csvg width='28' height='28' viewBox='0 0 28 28' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='14' cy='14' r='9' stroke='%237b1f2b' stroke-width='1.4'/%3E%3Cpath d='M14 9V14L18 16.5' stroke='%237b1f2b' stroke-width='1.4' stroke-linecap='round'/%3E%3C/svg%3E");
+    }
+
+    .icon-place span::before {
+      background-image: url("data:image/svg+xml,%3Csvg width='28' height='28' viewBox='0 0 28 28' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M14 24S21 17.7 21 12.3C21 8.2 17.9 5.5 14 5.5S7 8.2 7 12.3C7 17.7 14 24 14 24Z' stroke='%237b1f2b' stroke-width='1.4'/%3E%3Ccircle cx='14' cy='12.5' r='2.5' stroke='%23b69062' stroke-width='1.3'/%3E%3C/svg%3E");
+    }
+
+    .icon-holiday span::before,
+    .icon-leave h3::before {
+      background-image: url("data:image/svg+xml,%3Csvg width='28' height='28' viewBox='0 0 28 28' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='5.5' y='7' width='17' height='16' rx='1' stroke='%237b1f2b' stroke-width='1.4'/%3E%3Cpath d='M9 5V9M19 5V9M5.5 12H22.5' stroke='%237b1f2b' stroke-width='1.4' stroke-linecap='round'/%3E%3Cpath d='M10 16H12.5M15.5 16H18M10 19.5H12.5' stroke='%23b69062' stroke-width='1.3' stroke-linecap='round'/%3E%3C/svg%3E");
+    }
+
+    .benefit-grid {
+      display: grid;
+      gap: 12px;
+    }
+
+    .benefit {
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, .48);
+      padding: 20px 22px;
+    }
+
+    .benefit h3 {
+      margin-bottom: 10px;
+      color: var(--navy);
+      font-size: 21px;
+      font-weight: 500;
+      line-height: 1.45;
+    }
+
+    .icon-family h3::before {
+      background-image: url("data:image/svg+xml,%3Csvg width='28' height='28' viewBox='0 0 28 28' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M14 23S6.5 18.5 6.5 12.3C6.5 9.3 8.5 7 11.2 7C12.7 7 13.6 7.8 14 8.6C14.4 7.8 15.3 7 16.8 7C19.5 7 21.5 9.3 21.5 12.3C21.5 18.5 14 23 14 23Z' stroke='%237b1f2b' stroke-width='1.4'/%3E%3C/svg%3E");
+    }
+
+    .icon-award h3::before {
+      background-image: url("data:image/svg+xml,%3Csvg width='28' height='28' viewBox='0 0 28 28' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='14' cy='10.5' r='5.5' stroke='%237b1f2b' stroke-width='1.4'/%3E%3Cpath d='M10.5 15L8 24L14 20.5L20 24L17.5 15' stroke='%23b69062' stroke-width='1.3' stroke-linejoin='round'/%3E%3C/svg%3E");
+    }
+
+    .icon-training h3::before {
+      background-image: url("data:image/svg+xml,%3Csvg width='28' height='28' viewBox='0 0 28 28' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 21H23' stroke='%237b1f2b' stroke-width='1.4' stroke-linecap='round'/%3E%3Cpath d='M8 19V14M14 19V9M20 19V6' stroke='%237b1f2b' stroke-width='1.4' stroke-linecap='round'/%3E%3Cpath d='M8 14L14 9L20 6' stroke='%23b69062' stroke-width='1.3' stroke-linecap='round'/%3E%3C/svg%3E");
+    }
+
+    .text-panel {
+      border-top: 1px solid rgba(255,255,255,.22);
+      border-bottom: 1px solid rgba(255,255,255,.22);
+    }
+
+    .text-row {
+      padding: 22px 0;
+      border-bottom: 1px solid rgba(255,255,255,.22);
+    }
+
+    .text-row:last-child {
+      border-bottom: 0;
+    }
+
+    .text-row h3 {
+      margin-bottom: 10px;
+      color: #e9d7b7;
+      font-size: 22px;
+      font-weight: 500;
+    }
+
+    .list {
+      margin: 12px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .list li {
+      padding: 10px 0;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .flow {
+      display: grid;
+      gap: 0;
+      border-top: 1px solid rgba(255,255,255,.24);
+    }
+
+    .flow-step {
+      display: flex;
+      gap: 16px;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255,255,255,.24);
+    }
+
+    .flow-step span {
+      flex: 0 0 34px;
+      color: #d9c8aa;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size: 12px;
+      letter-spacing: .12em;
+    }
+
+    .flow-step b {
+      font-weight: 400;
+      line-height: 1.55;
+    }
+
+    .cta {
+      text-align: center;
+      background:
+        linear-gradient(90deg, transparent 0 19%, rgba(123,31,43,.12) 19% 22%, transparent 22% 52%, rgba(7,31,61,.12) 52% 55%, transparent 55% 80%, rgba(182,144,98,.18) 80% 84%, transparent 84%),
+        var(--cream);
+    }
+
+    .cta h2 {
+      font-size: clamp(44px, 14vw, 82px);
+      line-height: .96;
+      font-weight: 400;
+      text-transform: uppercase;
+    }
+
+    .cta .button.secondary {
+      color: var(--navy);
+    }
+
+    .footer {
+      padding: 28px 22px;
+      background: var(--deep);
+      color: rgba(255,253,248,.72);
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    @media (min-width: 720px) {
+      .actions {
+        display: flex;
+        justify-content: center;
+      }
+
+      .button {
+        min-width: 210px;
+      }
+
+      .feature-list,
+      .detail-grid,
+      .benefit-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .feature {
+        padding: 24px;
+        border-right: 1px solid var(--line);
+      }
+
+      .feature:nth-child(2n) {
+        border-right: 0;
+      }
+    }
+
+    @media (min-width: 980px) {
+      .site-header {
+        position: fixed;
+        inset: 42px 0 auto;
+        padding: 26px 48px;
+      }
+
+      .nav {
+        display: flex;
+      }
+
+      .hero {
+        min-height: 100vh;
+        padding: 140px 54px 78px;
+      }
+
+      .hero-copy {
+        max-width: 800px;
+      }
+
+      h1 {
+        font-size: clamp(78px, 8vw, 122px);
+      }
+
+      .section {
+        padding: 88px 54px;
+      }
+
+      .section-head {
+        grid-template-columns: minmax(220px, 360px) minmax(0, 1fr);
+        gap: 80px;
+        margin-bottom: 48px;
+      }
+
+      .section-title {
+        font-size: clamp(58px, 6vw, 94px);
+      }
+
+      .split {
+        grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr);
+        gap: 74px;
+      }
+
+      .visual-panel {
+        min-height: 560px;
+      }
+
+      .detail-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .benefit-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .footer {
+        padding-inline: 54px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="top-ribbon">POLO RALPH LAUREN MEN'S 高島屋新宿店 / 正社員採用</div>
+
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Ralph Lauren Recruit">RALPH LAUREN</a>
+    <nav class="nav" aria-label="ページ内ナビゲーション">
+      <a href="#message">Message</a>
+      <a href="#work">Work</a>
+      <a href="#details">Details</a>
+      <a href="#benefits">Benefits</a>
+      <a href="#entry">Entry</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="kicker">POLO RALPH LAUREN / Client Experience</p>
+        <h1 id="hero-title">Polo<br>Recruit</h1>
+        <p class="hero-lead">流行に左右されない世界観を、日々の接客で届ける。</p>
+        <p class="hero-text">POLO RALPH LAUREN MEN'S 高島屋新宿店で、ブランドアンバサダーとしてお客様一人ひとりに合ったライフスタイルを提案する販売スタッフを募集します。</p>
+        <div class="actions">
+          <a class="button" href="https://www.t-w-c.net/entry/258922/">応募画面へ進む</a>
+          <a class="button secondary" href="#details">募集要項を見る</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="message">
+      <div class="section-inner">
+        <div class="section-head">
+          <h2 class="section-title">Message<small>採用メッセージ</small></h2>
+          <div>
+            <p class="lead">ラルフローレンの魅力を、もっと多くのお客様へ。</p>
+            <p class="muted" style="margin-top: 16px;">お客様へのファッションアドバイス、在庫管理、商品管理、ディスプレイ作りまで。売場に立つ一人ひとりがブランドの世界観を体現し、心地よい店舗体験をつくります。</p>
+          </div>
+        </div>
+        <div class="feature-list">
+          <div class="feature">
+            <span class="label">Point 01</span>
+            <strong>百貨店での販売経験を活かせる環境</strong>
+          </div>
+          <div class="feature">
+            <span class="label">Point 02</span>
+            <strong>年2回の制服支給・社員割引制度あり</strong>
+          </div>
+          <div class="feature">
+            <span class="label">Point 03</span>
+            <strong>年間公休114日・パーソナル休暇あり</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="work">
+      <div class="section-inner split">
+        <div class="visual-panel" aria-hidden="true"></div>
+        <div class="copy-block">
+          <p class="kicker" style="color: var(--red);">Work</p>
+          <h3>お客様の暮らしに、ブランドの物語を重ねる。</h3>
+          <p class="muted">仕事内容は、接客販売、商品管理、在庫管理、ディスプレイ作りなど。単に商品を販売するのではなく、お客様の好みや用途を丁寧に汲み取り、一人ひとりに合うスタイルを提案します。</p>
+          <p class="muted">ホスピタリティを大切にしながら、最高のサービスを提供すること。ブランドアンバサダーとして、ラルフローレンの世界観をお客様に体感していただく仕事です。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark" id="profile">
+      <div class="section-inner">
+        <div class="section-head">
+          <h2 class="section-title">Profile<small>応募資格・求める人物像</small></h2>
+          <p class="lead">ファッションが好きで、ブランドの魅力を自分の言葉で伝えたい方を歓迎します。</p>
+        </div>
+        <div class="text-panel">
+          <div class="text-row">
+            <h3>応募資格</h3>
+            <p class="muted">接客・販売経験のある方。百貨店での接客経験、アパレル販売経験をお持ちの方は歓迎します。</p>
+          </div>
+          <div class="text-row">
+            <h3>求める人物像</h3>
+            <p class="muted">チームで働くことを楽しめる方、物事をポジティブに捉えられる方、人とのコミュニケーションが好きな方。成長意欲やチャレンジ精神を持ち、ラルフローレンファミリーの一員としてブランドを届けたい方を求めています。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="details">
+      <div class="section-inner">
+        <div class="section-head">
+          <h2 class="section-title">Details<small>募集要項</small></h2>
+          <p class="lead">高島屋新宿店での正社員採用。長く安定して働ける条件を整えています。</p>
+        </div>
+        <div class="detail-grid">
+          <div class="detail icon-pay">
+            <span>Salary</span>
+            <p>月給 215,000円〜<br>経験・実力を考慮し決定</p>
+          </div>
+          <div class="detail icon-contract">
+            <span>Contract</span>
+            <p>正社員<br>試用期間3ヶ月</p>
+          </div>
+          <div class="detail icon-time">
+            <span>Work Time</span>
+            <p>10:00〜20:30<br>実働7時間30分</p>
+          </div>
+          <div class="detail icon-holiday">
+            <span>Holiday</span>
+            <p>年間公休114日<br>月8〜10日休み</p>
+          </div>
+          <div class="detail icon-place">
+            <span>Location</span>
+            <p>新宿高島屋<br>東京都渋谷区千駄ケ谷5-24-2</p>
+          </div>
+          <div class="detail icon-pay">
+            <span>Allowance</span>
+            <p>交通費支給、昇給あり<br>月次インセンティブ制度</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="benefits">
+      <div class="section-inner">
+        <div class="section-head">
+          <h2 class="section-title">Benefits<small>待遇・福利厚生</small></h2>
+          <p class="lead">休日休暇と福利厚生を整え、スタッフの成長と暮らしを支えます。</p>
+        </div>
+        <div class="benefit-grid">
+          <div class="benefit icon-benefit">
+            <h3>報酬制度</h3>
+            <p class="muted">給与改定年1回、月次インセンティブ制度、残業代別途支給、交通費支給。</p>
+          </div>
+          <div class="benefit icon-leave">
+            <h3>休暇制度</h3>
+            <p class="muted">年次有給休暇、パーソナル休暇、バースデー休暇、慶弔休暇、サバティカル休暇。</p>
+          </div>
+          <div class="benefit icon-family">
+            <h3>ファミリーサポート</h3>
+            <p class="muted">産休・育児休暇、ファミリーリーブ、退職年金制度など。</p>
+          </div>
+          <div class="benefit icon-award">
+            <h3>社内制度</h3>
+            <p class="muted">レガシーアワード、総合福祉団体定期保険、コーポレートホテル割引。</p>
+          </div>
+          <div class="benefit icon-training">
+            <h3>成長支援</h3>
+            <p class="muted">研修参加保証制度あり。ブランド理解と接客力を高められます。</p>
+          </div>
+          <div class="benefit icon-benefit">
+            <h3>Benefit One</h3>
+            <p class="muted">宿泊施設、スポーツクラブ、飲食店、映画館、レジャー施設などの割引あり。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green">
+      <div class="section-inner">
+        <div class="section-head">
+          <h2 class="section-title">Flow<small>応募方法</small></h2>
+          <p class="lead">履歴書入力後、書類選考、面接を経て内定となります。</p>
+        </div>
+        <div class="flow">
+          <div class="flow-step"><span>01</span><b>メールまたはSMSで届く履歴書入力に回答</b></div>
+          <div class="flow-step"><span>02</span><b>書類選考結果をメールにてご連絡</b></div>
+          <div class="flow-step"><span>03</span><b>WEB面接または対面面接を実施</b></div>
+          <div class="flow-step"><span>04</span><b>内定・入社</b></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cta" id="entry">
+      <div class="section-inner">
+        <p class="kicker" style="color: var(--red);">Entry</p>
+        <h2>Join<br>Polo</h2>
+        <p class="muted" style="max-width: 720px; margin: 22px auto 0;">お客様にとって心地よいお店作りを目標に、ラルフローレンの世界観を届ける仕事を始めませんか。</p>
+        <div class="actions">
+          <a class="button" href="https://www.t-w-c.net/entry/258922/">応募画面へ進む</a>
+          <a class="button secondary" href="#top">ページ上部へ戻る</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>POLO RALPH LAUREN Recruit Landing Page / Source: TWC Job Detail 258922</p>
+  </footer>
+</body>
+</html>

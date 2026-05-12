@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="ja">
 <head>
@@ -101,23 +102,31 @@
       padding: 118px 22px 54px;
       color: var(--white);
       background:
-        linear-gradient(180deg, rgba(6, 21, 43, .20), rgba(6, 21, 43, .72)),
-        radial-gradient(circle at 28% 24%, rgba(255, 255, 255, .34), transparent 22%),
-        linear-gradient(115deg, transparent 0 24%, rgba(6, 21, 43, .42) 24% 42%, transparent 42%),
-        repeating-linear-gradient(90deg, rgba(255, 255, 255, .06) 0 1px, transparent 1px 78px),
-        linear-gradient(135deg, #22334b, #9e8b70 48%, #173f35);
+        linear-gradient(180deg, rgba(6, 21, 43, .10), rgba(6, 21, 43, .78)),
+        radial-gradient(circle at 30% 18%, rgba(255, 255, 255, .28), transparent 24%),
+        radial-gradient(circle at 82% 12%, rgba(182, 144, 98, .28), transparent 28%),
+        repeating-linear-gradient(135deg, rgba(255, 255, 255, .055) 0 1px, transparent 1px 18px),
+        linear-gradient(135deg, #142845, #536d79 52%, #173f35);
     }
 
     .hero::before {
       content: "";
       position: absolute;
-      inset: 12% -18% 8% 38%;
+      inset: 14% 8% 12%;
       background:
-        linear-gradient(90deg, rgba(123, 31, 43, .34) 0 12%, transparent 12% 42%, rgba(246, 242, 232, .26) 42% 50%, transparent 50%),
-        linear-gradient(0deg, rgba(7, 31, 61, .28) 0 18%, transparent 18% 46%, rgba(182, 144, 98, .34) 46% 55%, transparent 55%),
-        rgba(247, 242, 232, .16);
-      border: 1px solid rgba(255, 255, 255, .22);
-      transform: rotate(-8deg);
+        radial-gradient(ellipse at center, rgba(255, 253, 248, .18), transparent 58%);
+      border: 1px solid rgba(255, 255, 255, .20);
+      box-shadow: inset 0 0 0 12px rgba(255, 255, 255, .035);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 34%;
+      background:
+        linear-gradient(180deg, transparent, rgba(6, 21, 43, .34));
+      pointer-events: none;
     }
 
     .hero-copy {
@@ -149,6 +158,27 @@
       margin-top: 26px;
       font-size: clamp(22px, 6.3vw, 34px);
       line-height: 1.55;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 22px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .hero-meta li {
+      border: 1px solid rgba(255, 253, 248, .48);
+      padding: 6px 12px;
+      background: rgba(6, 21, 43, .22);
+      color: rgba(255, 253, 248, .94);
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .04em;
     }
 
     .hero-text {
@@ -186,6 +216,56 @@
 
     .section {
       padding: 54px 22px;
+    }
+
+    .summary {
+      background: var(--white);
+      border-bottom: 1px solid var(--line);
+      padding: 0 22px;
+    }
+
+    .summary-grid {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: grid;
+      gap: 1px;
+      background: var(--line);
+      border-left: 1px solid var(--line);
+      border-right: 1px solid var(--line);
+    }
+
+    .summary-item {
+      background: var(--white);
+      padding: 18px 20px;
+    }
+
+    .summary-item span {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--red);
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .summary-item b {
+      display: block;
+      font-size: clamp(18px, 5vw, 24px);
+      font-weight: 500;
+      line-height: 1.35;
+    }
+
+    .target-note {
+      padding: 18px 0 0;
+      color: var(--navy);
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-align: center;
+      text-transform: uppercase;
     }
 
     .section.dark {
@@ -281,6 +361,23 @@
       font-weight: 500;
     }
 
+    .inline-cta {
+      margin-top: 28px;
+      padding: 24px 22px;
+      background: var(--navy);
+      color: var(--white);
+      text-align: center;
+    }
+
+    .inline-cta p {
+      font-size: clamp(18px, 5vw, 24px);
+      line-height: 1.55;
+    }
+
+    .inline-cta .button {
+      margin-top: 16px;
+    }
+
     .split {
       display: grid;
       gap: 30px;
@@ -291,10 +388,11 @@
       position: relative;
       overflow: hidden;
       background:
-        radial-gradient(circle at 18% 22%, rgba(255,255,255,.42), transparent 18%),
-        linear-gradient(90deg, transparent 0 18%, rgba(123,31,43,.28) 18% 23%, transparent 23% 50%, rgba(7,31,61,.30) 50% 54%, transparent 54% 78%, rgba(182,144,98,.34) 78% 83%, transparent 83%),
-        linear-gradient(0deg, transparent 0 20%, rgba(7,31,61,.30) 20% 25%, transparent 25% 50%, rgba(182,144,98,.34) 50% 56%, transparent 56%),
-        linear-gradient(135deg, #e5d5bb, #61738c);
+        radial-gradient(circle at 20% 18%, rgba(255,255,255,.38), transparent 20%),
+        radial-gradient(circle at 78% 72%, rgba(7,31,61,.22), transparent 30%),
+        repeating-linear-gradient(45deg, rgba(23,32,51,.08) 0 1px, transparent 1px 16px),
+        repeating-linear-gradient(-45deg, rgba(255,255,255,.14) 0 1px, transparent 1px 18px),
+        linear-gradient(135deg, #e7d9c1, #93a3a9 54%, #173f35);
     }
 
     .visual-panel::after {
@@ -319,6 +417,26 @@
       font-size: clamp(30px, 8.5vw, 50px);
       line-height: 1.28;
       font-weight: 400;
+    }
+
+    .task-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 2px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .task-list li {
+      border: 1px solid var(--line);
+      padding: 7px 10px;
+      background: rgba(255, 255, 255, .52);
+      color: var(--navy);
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .03em;
     }
 
     .detail-grid {
@@ -436,6 +554,42 @@
       font-weight: 500;
     }
 
+    .stability-grid {
+      display: grid;
+      gap: 12px;
+    }
+
+    .reason-grid {
+      display: grid;
+      gap: 12px;
+    }
+
+    .reason-card {
+      border: 1px solid var(--line);
+      padding: 20px 22px;
+      background: rgba(255, 255, 255, .50);
+    }
+
+    .reason-card h3 {
+      margin-bottom: 8px;
+      color: var(--navy);
+      font-size: 21px;
+      font-weight: 500;
+    }
+
+    .stability-card {
+      border: 1px solid rgba(255, 255, 255, .22);
+      padding: 20px 22px;
+      background: rgba(255, 255, 255, .045);
+    }
+
+    .stability-card h3 {
+      margin-bottom: 8px;
+      color: #e9d7b7;
+      font-size: 21px;
+      font-weight: 500;
+    }
+
     .list {
       margin: 12px 0 0;
       padding: 0;
@@ -475,10 +629,44 @@
       line-height: 1.55;
     }
 
+    .day-flow {
+      display: grid;
+      gap: 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .day-item {
+      display: grid;
+      grid-template-columns: 70px minmax(0, 1fr);
+      gap: 14px;
+      padding: 15px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .day-item:last-child {
+      border-bottom: 0;
+    }
+
+    .day-item span {
+      color: var(--red);
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .12em;
+    }
+
+    .day-item b {
+      display: block;
+      margin-bottom: 2px;
+      font-weight: 500;
+    }
+
     .cta {
       text-align: center;
       background:
-        linear-gradient(90deg, transparent 0 19%, rgba(123,31,43,.12) 19% 22%, transparent 22% 52%, rgba(7,31,61,.12) 52% 55%, transparent 55% 80%, rgba(182,144,98,.18) 80% 84%, transparent 84%),
+        radial-gradient(circle at 50% 0, rgba(182,144,98,.26), transparent 34%),
+        repeating-linear-gradient(135deg, rgba(23,32,51,.045) 0 1px, transparent 1px 18px),
         var(--cream);
     }
 
@@ -515,7 +703,10 @@
 
       .feature-list,
       .detail-grid,
-      .benefit-grid {
+      .benefit-grid,
+      .summary-grid,
+      .stability-grid,
+      .reason-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
@@ -584,6 +775,18 @@
         grid-template-columns: repeat(3, minmax(0, 1fr));
       }
 
+      .summary-grid {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+      }
+
+      .stability-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .reason-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
       .footer {
         padding-inline: 54px;
       }
@@ -607,14 +810,46 @@
   <main id="top">
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-copy">
-        <p class="kicker">POLO RALPH LAUREN / Client Experience</p>
+        <p class="kicker">POLO RALPH LAUREN MEN'S / 高島屋新宿店</p>
         <h1 id="hero-title">Polo<br>Recruit</h1>
-        <p class="hero-lead">流行に左右されない世界観を、日々の接客で届ける。</p>
-        <p class="hero-text">POLO RALPH LAUREN MEN'S 高島屋新宿店で、ブランドアンバサダーとしてお客様一人ひとりに合ったライフスタイルを提案する販売スタッフを募集します。</p>
+        <p class="hero-lead">百貨店経験を活かし、POLO RALPH LAURENの接客へ。</p>
+        <ul class="hero-meta" aria-label="求人条件サマリー">
+          <li>新宿高島屋</li>
+          <li>正社員</li>
+          <li>月給21.5万円〜</li>
+          <li>経験者歓迎</li>
+        </ul>
+        <p class="hero-text">クラシックでタイムレスなメンズトラッドの世界観を、お客様一人ひとりの暮らしに合わせて提案する販売スタッフを募集します。</p>
         <div class="actions">
-          <a class="button" href="https://www.t-w-c.net/entry/258922/">応募画面へ進む</a>
+          <a class="button" href="https://www.t-w-c.net/entry/258922/">正社員採用に応募する</a>
           <a class="button secondary" href="#details">募集要項を見る</a>
         </div>
+      </div>
+    </section>
+
+    <section class="summary" aria-label="この求人の条件サマリー">
+        <div class="summary-grid">
+        <div class="summary-item">
+          <span>Salary</span>
+          <b>月給215,000円〜</b>
+        </div>
+        <div class="summary-item">
+          <span>Contract</span>
+          <b>正社員</b>
+        </div>
+        <div class="summary-item">
+          <span>Location</span>
+          <b>新宿高島屋</b>
+        </div>
+        <div class="summary-item">
+          <span>Holiday</span>
+          <b>年間公休114日</b>
+        </div>
+        <div class="summary-item">
+          <span>Uniform</span>
+          <b>年2回 制服支給</b>
+        </div>
+        <p class="target-note">百貨店・アパレル販売経験者歓迎</p>
       </div>
     </section>
 
@@ -623,8 +858,8 @@
         <div class="section-head">
           <h2 class="section-title">Message<small>採用メッセージ</small></h2>
           <div>
-            <p class="lead">ラルフローレンの魅力を、もっと多くのお客様へ。</p>
-            <p class="muted" style="margin-top: 16px;">お客様へのファッションアドバイス、在庫管理、商品管理、ディスプレイ作りまで。売場に立つ一人ひとりがブランドの世界観を体現し、心地よい店舗体験をつくります。</p>
+            <p class="lead">トラッドを、ライフスタイル提案へ。</p>
+            <p class="muted" style="margin-top: 16px;">POLO RALPH LAUREN MEN'Sの接客は、商品を売るだけではありません。クラシックな装いの魅力、タイムレスに着続けられる価値、お客様の暮らしに合うスタイルを、あなたの言葉で届ける仕事です。</p>
           </div>
         </div>
         <div class="feature-list">
@@ -641,6 +876,33 @@
             <strong>年間公休114日・パーソナル休暇あり</strong>
           </div>
         </div>
+        <div class="inline-cta">
+          <p>経験を活かせる環境で、正社員として長く働く。</p>
+          <a class="button" href="https://www.t-w-c.net/entry/258922/">経験を活かして応募する</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-inner">
+        <div class="section-head">
+          <h2 class="section-title">Experience<small>百貨店経験が活きる理由</small></h2>
+          <p class="lead">丁寧な接客、顧客との距離感、売場づくり。百貨店で培った力を、そのままブランド体験に変えられます。</p>
+        </div>
+        <div class="reason-grid">
+          <div class="reason-card">
+            <h3>上質な接客が活きる</h3>
+            <p class="muted">お客様の目的を汲み取り、会話から最適な一着を提案する力が求められます。</p>
+          </div>
+          <div class="reason-card">
+            <h3>顧客対応力が活きる</h3>
+            <p class="muted">一度きりの販売ではなく、長く信頼される関係づくりを大切にできます。</p>
+          </div>
+          <div class="reason-card">
+            <h3>売場づくりが活きる</h3>
+            <p class="muted">ディスプレイや商品管理を通して、POLO MEN'Sらしい空気を整えます。</p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -649,9 +911,31 @@
         <div class="visual-panel" aria-hidden="true"></div>
         <div class="copy-block">
           <p class="kicker" style="color: var(--red);">Work</p>
-          <h3>お客様の暮らしに、ブランドの物語を重ねる。</h3>
-          <p class="muted">仕事内容は、接客販売、商品管理、在庫管理、ディスプレイ作りなど。単に商品を販売するのではなく、お客様の好みや用途を丁寧に汲み取り、一人ひとりに合うスタイルを提案します。</p>
-          <p class="muted">ホスピタリティを大切にしながら、最高のサービスを提供すること。ブランドアンバサダーとして、ラルフローレンの世界観をお客様に体感していただく仕事です。</p>
+          <h3>お客様の暮らしに、メンズトラッドの物語を重ねる。</h3>
+          <p class="muted">単に商品を販売するのではなく、お客様の好みや用途を丁寧に汲み取り、ジャケット、シャツ、ニット、小物まで含めたライフスタイル提案を行います。</p>
+          <ul class="task-list" aria-label="主な仕事内容">
+            <li>接客販売</li>
+            <li>ファッションアドバイス</li>
+            <li>商品管理</li>
+            <li>在庫管理</li>
+            <li>ディスプレイ作り</li>
+          </ul>
+          <p class="muted">ホスピタリティを大切にしながら、ブランドアンバサダーとしてラルフローレンの世界観を体感していただく仕事です。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-inner">
+        <div class="section-head">
+          <h2 class="section-title">Day<small>1日の仕事の流れ</small></h2>
+          <p class="lead">実際の業務をイメージしやすいよう、店舗での一日をコンパクトにまとめました。</p>
+        </div>
+        <div class="day-flow">
+          <div class="day-item"><span>Start</span><p><b>出勤・朝礼</b>売上状況、来店予定、商品情報をチームで確認します。</p></div>
+          <div class="day-item"><span>Shop</span><p><b>接客・提案</b>お客様の用途や好みに合わせて、スタイリングを提案します。</p></div>
+          <div class="day-item"><span>Stock</span><p><b>商品管理</b>在庫確認、商品整理、ディスプレイの調整を行います。</p></div>
+          <div class="day-item"><span>Close</span><p><b>閉店準備</b>売場を整え、翌日の接客につながる準備をします。</p></div>
         </div>
       </div>
     </section>
@@ -660,17 +944,21 @@
       <div class="section-inner">
         <div class="section-head">
           <h2 class="section-title">Profile<small>応募資格・求める人物像</small></h2>
-          <p class="lead">ファッションが好きで、ブランドの魅力を自分の言葉で伝えたい方を歓迎します。</p>
+          <p class="lead">「自分の経験が活きそう」と思える方に、届いてほしい求人です。</p>
         </div>
         <div class="text-panel">
           <div class="text-row">
             <h3>応募資格</h3>
-            <p class="muted">接客・販売経験のある方。百貨店での接客経験、アパレル販売経験をお持ちの方は歓迎します。</p>
+            <p class="muted">接客・販売経験のある方。特に、百貨店での接客経験を活かしたい方、アパレル販売経験を次のステージにつなげたい方を歓迎します。</p>
           </div>
           <div class="text-row">
             <h3>求める人物像</h3>
-            <p class="muted">チームで働くことを楽しめる方、物事をポジティブに捉えられる方、人とのコミュニケーションが好きな方。成長意欲やチャレンジ精神を持ち、ラルフローレンファミリーの一員としてブランドを届けたい方を求めています。</p>
+            <p class="muted">ラルフローレンの世界観を語れる販売員になりたい方。チームで売場をつくることに前向きな方。人とのコミュニケーションが好きで、クラシックでタイムレスな価値をお客様に届けたい方を求めています。</p>
           </div>
+        </div>
+        <div class="inline-cta">
+          <p>ラルフローレンの世界観を、あなたの接客で届ける。</p>
+          <a class="button" href="https://www.t-w-c.net/entry/258922/">高島屋新宿店へ応募する</a>
         </div>
       </div>
     </section>
@@ -684,7 +972,7 @@
         <div class="detail-grid">
           <div class="detail icon-pay">
             <span>Salary</span>
-            <p>月給 215,000円〜<br>経験・実力を考慮し決定</p>
+            <p>月給 215,000円〜<br>月次インセンティブ・残業代別途支給</p>
           </div>
           <div class="detail icon-contract">
             <span>Contract</span>
@@ -707,6 +995,43 @@
             <p>交通費支給、昇給あり<br>月次インセンティブ制度</p>
           </div>
         </div>
+        <div class="inline-cta">
+          <p>条件を確認したら、そのまま応募へ。</p>
+          <a class="button" href="https://www.t-w-c.net/entry/258922/">正社員採用に応募する</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green">
+      <div class="section-inner">
+        <div class="section-head">
+          <h2 class="section-title">Family<small>スタッフはファミリー</small></h2>
+          <p class="lead">私たちは、スタッフをファミリーであると考えています。</p>
+        </div>
+        <p class="muted">チームで働くことを楽しみ、互いに支え合いながら、お客様にブランドの魅力や世界観を届ける。ラルフローレンファミリーの一員として、誇りを持って接客に向き合える環境です。</p>
+      </div>
+    </section>
+
+    <section class="section dark">
+      <div class="section-inner">
+        <div class="section-head">
+          <h2 class="section-title">Stability<small>長く働ける理由</small></h2>
+          <p class="lead">正社員として、安心してキャリアを重ねられる制度があります。</p>
+        </div>
+        <div class="stability-grid">
+          <div class="stability-card">
+            <h3>長期で安定</h3>
+            <p class="muted">正社員採用。試用期間3ヶ月後も給与・待遇は同じで、長く働ける環境です。</p>
+          </div>
+          <div class="stability-card">
+            <h3>退職年金制度</h3>
+            <p class="muted">将来を見据えて働けるよう、退職年金制度や定年制度を整えています。</p>
+          </div>
+          <div class="stability-card">
+            <h3>定年65歳</h3>
+            <p class="muted">販売職としての経験を積み重ね、長期的にキャリアを築けます。</p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -717,21 +1042,21 @@
           <p class="lead">休日休暇と福利厚生を整え、スタッフの成長と暮らしを支えます。</p>
         </div>
         <div class="benefit-grid">
-          <div class="benefit icon-benefit">
-            <h3>報酬制度</h3>
-            <p class="muted">給与改定年1回、月次インセンティブ制度、残業代別途支給、交通費支給。</p>
-          </div>
           <div class="benefit icon-leave">
             <h3>休暇制度</h3>
             <p class="muted">年次有給休暇、パーソナル休暇、バースデー休暇、慶弔休暇、サバティカル休暇。</p>
           </div>
+          <div class="benefit icon-benefit">
+            <h3>報酬制度</h3>
+            <p class="muted">給与改定年1回、月次インセンティブ制度、残業代別途支給、交通費支給。</p>
+          </div>
+          <div class="benefit icon-award">
+            <h3>制服支給</h3>
+            <p class="muted">年2回の制服支給あり。社員割引購入制度も利用できます。</p>
+          </div>
           <div class="benefit icon-family">
             <h3>ファミリーサポート</h3>
             <p class="muted">産休・育児休暇、ファミリーリーブ、退職年金制度など。</p>
-          </div>
-          <div class="benefit icon-award">
-            <h3>社内制度</h3>
-            <p class="muted">レガシーアワード、総合福祉団体定期保険、コーポレートホテル割引。</p>
           </div>
           <div class="benefit icon-training">
             <h3>成長支援</h3>
@@ -766,7 +1091,7 @@
         <h2>Join<br>Polo</h2>
         <p class="muted" style="max-width: 720px; margin: 22px auto 0;">お客様にとって心地よいお店作りを目標に、ラルフローレンの世界観を届ける仕事を始めませんか。</p>
         <div class="actions">
-          <a class="button" href="https://www.t-w-c.net/entry/258922/">応募画面へ進む</a>
+          <a class="button" href="https://www.t-w-c.net/entry/258922/">高島屋新宿店へ応募する</a>
           <a class="button secondary" href="#top">ページ上部へ戻る</a>
         </div>
       </div>

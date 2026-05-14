@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Kohga × FRS 提案書</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Barlow+Condensed:ital,wght@0,300;0,600;0,700;1,300;1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+:root{
+  --acc:#16a34a;--acc2:#0891b2;--acc3:#d97706;--red:#dc2626;
+  --text:#1a1a1a;--text2:rgba(0,0,0,.55);--text3:rgba(0,0,0,.35);
+  --card:#f8f8f6;--border:rgba(0,0,0,.08);
+}
+html,body{width:100%;height:100%;overflow:hidden;background:#f0f0ee;}
+#deck{width:100%;height:100%;position:relative;overflow:hidden;background:#fff;}
+
+.slide{
+  position:absolute;inset:0;
+  overflow-y:auto;overflow-x:hidden;
+  -webkit-overflow-scrolling:touch;
+  background:#fff;color:var(--text);
+  padding:56px 24px 88px;
+  opacity:0;pointer-events:none;
+  transition:transform .36s cubic-bezier(.4,0,.2,1),opacity .36s ease;
+  transform:translateX(100%);
+}
+.slide.on{opacity:1;pointer-events:all;transform:translateX(0);}
+.slide.exit-left{transform:translateX(-60%);opacity:0;pointer-events:none;}
+.slide.exit-right{transform:translateX(100%);opacity:0;pointer-events:none;}
+
+/* progress */
+#progress{position:fixed;top:0;left:0;right:0;height:3px;background:rgba(0,0,0,.06);z-index:200;}
+#pbar{height:100%;background:var(--acc);transition:width .3s ease;}
+#counter{position:fixed;top:10px;right:16px;z-index:200;font-family:'Barlow Condensed',sans-serif;font-size:13px;color:var(--text3);letter-spacing:.08em;}
+#dots{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:200;}
+.dot{width:6px;height:6px;border-radius:50%;background:rgba(0,0,0,.18);transition:.25s;cursor:pointer;}
+.dot.on{width:20px;border-radius:3px;background:var(--acc);}
+#hint{position:fixed;bottom:46px;left:50%;transform:translateX(-50%);font-size:11px;color:var(--text3);letter-spacing:.05em;font-family:'Barlow Condensed',sans-serif;opacity:1;transition:opacity .6s;pointer-events:none;white-space:nowrap;}
+#hint.hide{opacity:0;}
+
+/* common */
+.en{font-family:'Barlow Condensed',sans-serif;}
+.sec-num{font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:.22em;color:var(--text3);margin-bottom:6px;}
+.eyebrow{font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:.22em;color:var(--acc);margin-bottom:10px;}
+h2{font-size:26px;font-weight:700;line-height:1.25;margin-bottom:22px;color:var(--text);}
+.badge{display:inline-block;font-size:11px;font-weight:500;padding:3px 12px;border-radius:20px;margin-bottom:10px;font-family:'Barlow Condensed',sans-serif;letter-spacing:.06em;}
+.chip{display:inline-block;font-size:13px;background:rgba(22,163,74,.08);border:1px solid rgba(22,163,74,.2);color:var(--acc);padding:6px 16px;border-radius:30px;margin:4px 4px 0 0;}
+.num-big{font-family:'Noto Sans JP',sans-serif;font-size:60px;font-weight:700;line-height:1;}
+.band{border-radius:12px;padding:16px 20px;font-size:14px;line-height:1.7;margin-top:14px;}
+.divider{height:1px;background:var(--border);margin:18px 0;}
+.arrow-item{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--text2);line-height:1.7;margin-bottom:8px;}
+.arrow-item::before{content:'→';color:var(--acc3);flex-shrink:0;font-family:'Barlow Condensed',sans-serif;font-size:16px;}
+
+/* S1 cover */
+#s1{display:flex;flex-direction:column;justify-content:center;min-height:100%;}
+#s1 .deco{font-family:'Barlow Condensed',sans-serif;font-size:110px;font-weight:900;color:rgba(22,163,74,.05);line-height:1;margin-bottom:-16px;}
+#s1 h1{font-size:38px;font-weight:900;line-height:1.1;margin-bottom:14px;}
+#s1 h1 span{color:var(--acc);}
+#s1 .sub{font-size:15px;color:var(--text2);margin-bottom:28px;font-weight:300;line-height:1.7;}
+#s1 .meta{margin-top:36px;padding-top:18px;border-top:1px solid var(--border);}
+#s1 .meta-label{font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:.2em;color:var(--text3);margin-bottom:4px;}
+#s1 .meta-val{font-size:18px;font-weight:700;}
+
+/* ---- CARD GRID (共通) ---- */
+.card-grid{display:flex;flex-direction:column;gap:10px;margin-bottom:14px;}
+.card-grid .card-item{border-radius:14px;padding:16px;display:flex;flex-direction:column;}
+
+/* S2 */
+#s2 .box{border-radius:14px;padding:16px;border-top:3px solid;display:flex;flex-direction:column;}
+#s2 .box.r{background:#fff5f5;border-color:var(--red);}
+#s2 .box.y{background:#fffbeb;border-color:var(--acc3);}
+#s2 .box.g{background:#f0fdf4;border-color:var(--acc);}
+#s2 .box .num-big.r{color:var(--red);}
+#s2 .box .num-big.y{color:var(--acc3);}
+#s2 .box .num-big.g{color:var(--acc);}
+#s2 .box .num-label{font-size:11px;color:var(--text3);margin-bottom:8px;}
+#s2 .box h3{font-size:14px;font-weight:700;margin-bottom:6px;}
+#s2 .box p{font-size:13px;color:var(--text2);line-height:1.7;}
+#s2 .gap-band{background:rgba(22,163,74,.07);border:1px solid rgba(22,163,74,.2);color:var(--acc);}
+
+/* S3 */
+#s3 .opp{background:var(--card);border-radius:14px;padding:16px;display:flex;flex-direction:column;}
+#s3 .opp .tag{background:rgba(8,145,178,.1);color:var(--acc2);}
+#s3 .opp h3{font-size:14px;font-weight:700;margin-bottom:6px;}
+#s3 .opp p{font-size:13px;color:var(--text2);line-height:1.7;}
+#s3 .bottom-band{background:rgba(8,145,178,.06);border:1px solid rgba(8,145,178,.18);color:var(--acc2);}
+
+/* S4 */
+#s4 .phase{background:var(--card);border-radius:14px;padding:16px;display:flex;flex-direction:column;}
+#s4 .ph-tag{background:rgba(217,119,6,.1);color:var(--acc3);}
+#s4 .ph-tag.dim{background:rgba(0,0,0,.06);color:var(--text3);}
+#s4 .ph-num{font-family:'Barlow Condensed',sans-serif;font-size:40px;font-weight:700;line-height:1;color:rgba(217,119,6,.22);margin-bottom:6px;}
+#s4 .ph-num.dim{color:rgba(0,0,0,.08);}
+#s4 .phase h3{font-size:14px;font-weight:700;margin-bottom:8px;}
+#s4 .btm-grid{display:flex;flex-direction:column;gap:10px;margin-top:4px;}
+#s4 .btm{background:rgba(217,119,6,.05);border:1px solid rgba(217,119,6,.18);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;}
+#s4 .btm h4{font-size:13px;font-weight:700;color:var(--acc3);margin-bottom:5px;}
+#s4 .btm p{font-size:12px;color:var(--text2);line-height:1.65;}
+
+/* S5 */
+#s5 .str{background:var(--card);border-left:4px solid var(--acc);border-radius:0 14px 14px 0;padding:16px;display:flex;flex-direction:column;}
+#s5 .str .str-head{display:flex;align-items:center;gap:10px;margin-bottom:6px;}
+#s5 .str .icon{font-size:18px;color:var(--acc);flex-shrink:0;}
+#s5 .str h3{font-size:14px;font-weight:700;margin:0;}
+#s5 .str p{font-size:13px;color:var(--text2);line-height:1.7;}
+#s5 .moat{background:rgba(22,163,74,.06);border:1px solid rgba(22,163,74,.2);border-radius:12px;padding:14px 16px;margin-top:4px;}
+#s5 .moat-title{font-size:13px;font-weight:500;color:var(--acc);margin-bottom:10px;}
+#s5 .moat-item{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text2);margin-bottom:6px;}
+#s5 .moat-item i{color:var(--acc);font-size:11px;}
+
+/* S6 */
+#s6 .tl{margin-bottom:10px;width:100%;display:block;box-sizing:border-box;}
+#s6 .tl-head{display:flex;align-items:baseline;gap:10px;margin-bottom:7px;}
+#s6 .tl-phase{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:700;}
+#s6 .tl-period{font-size:12px;color:var(--text3);}
+#s6 .tl-body{background:var(--card);border-radius:12px;padding:14px 18px;min-height:130px;border:1px solid rgba(0,0,0,.06);width:100%;display:block;}
+#s6 .tl-body h3{font-size:15px;font-weight:700;margin-bottom:8px;}
+#s6 .tl-item{display:flex;align-items:flex-start;gap:8px;font-size:13px;color:var(--text2);margin-bottom:5px;line-height:1.6;}
+#s6 .tl-item i{font-size:11px;margin-top:3px;flex-shrink:0;}
+#s6 .tl.now .tl-phase{color:var(--acc);}
+#s6 .tl.now .tl-body{background:rgba(22,163,74,.05);border:1px solid rgba(22,163,74,.2);}
+#s6 .tl.mid .tl-phase{color:var(--acc3);}
+#s6 .tl.mid .tl-body{background:rgba(217,119,6,.04);border:1px solid rgba(217,119,6,.15);}
+#s6 .tl.far .tl-phase,#s6 .tl.global .tl-phase{color:var(--acc2);}
+#s6 .tl.far .tl-body{background:rgba(8,145,178,.04);border:1px solid rgba(8,145,178,.15);}
+#s6 .tl.global .tl-body{background:rgba(8,145,178,.04);border:1px solid rgba(8,145,178,.15);}
+#s6 .vision-band{background:rgba(8,145,178,.06);border:1px solid rgba(8,145,178,.18);color:var(--acc2);display:flex;align-items:flex-start;gap:12px;}
+#s6 .vision-band i{font-size:18px;flex-shrink:0;margin-top:2px;}
+#s6 .vision-band p{font-size:14px;line-height:1.7;}
+
+/* S7 */
+#s7 .act{background:var(--card);border-radius:14px;padding:20px;margin-bottom:12px;}
+#s7 .act-num{font-family:'Barlow Condensed',sans-serif;font-size:44px;font-weight:700;color:rgba(22,163,74,.15);line-height:1;margin-bottom:7px;}
+#s7 .act h3{font-size:16px;font-weight:700;margin-bottom:7px;}
+#s7 .act p{font-size:14px;color:var(--text2);line-height:1.75;}
+#s7 .cta{background:rgba(22,163,74,.07);border:1px solid rgba(22,163,74,.25);border-radius:14px;padding:20px;margin-top:4px;display:flex;align-items:center;justify-content:space-between;gap:12px;}
+#s7 .cta p{font-size:15px;color:var(--acc);line-height:1.6;flex:1;}
+#s7 .cta .arr{font-family:'Barlow Condensed',sans-serif;font-size:36px;color:var(--acc);flex-shrink:0;}
+</style>
+</head>
+<body>
+
+<div id="progress"><div id="pbar" style="width:14.3%"></div></div>
+<div id="counter">1 / 7</div>
+<div id="dots"></div>
+<div id="hint">← スワイプでページを捲る →</div>
+
+<div id="deck">
+
+<!-- S1: COVER -->
+<div class="slide on" id="s1">
+  <div class="deco en">FRS</div>
+  <div class="eyebrow">BUSINESS PROPOSAL 2026</div>
+  <h1>FRS工法、<br><span>全国を</span><br>ブランドにする。</h1>
+  <div class="sub">Kohga × タカラ産業<br>ブランディング支援提案</div>
+  <div>
+    <span class="chip">全国52社の加盟店支援</span>
+    <span class="chip">デジタル集客の標準化</span>
+    <span class="chip">FRSブランド統一</span>
+    <span class="chip">海外展開の足がかり</span>
+  </div>
+  <div class="meta">
+    <div class="meta-label">PRESENTED BY</div>
+    <div class="meta-val">Kohga</div>
+  </div>
+</div>
+
+<!-- S2: SITUATION -->
+<div class="slide" id="s2">
+  <div class="sec-num">01 / SITUATION</div>
+  <h2>FRS工法が抱える<br>3つの構造的課題</h2>
+  <div class="card-grid" id="s2-grid">
+    <div class="box r">
+      <div class="num-big r" style="font-family:'Barlow Condensed',sans-serif;">52</div>
+      <div class="num-label">全国加盟店数</div>
+      <h3>各社がバラバラに動いている</h3>
+      <p>加盟店ごとにHP・訴求・SNSが統一されておらず、FRSというブランドとして認知が取れていない。</p>
+    </div>
+    <div class="box y">
+      <div class="num-big y" style="font-family:'Barlow Condensed',sans-serif;">0</div>
+      <div class="num-label">SNSで動画を出している加盟店</div>
+      <h3>デジタル・SNSが壊滅的に弱い</h3>
+      <p>競合のMIST工法®はメディア出演・SEO・全国FC展開で圧倒的な認知を獲得。FRS加盟店のほとんどが古いHPのみ。</p>
+    </div>
+    <div class="box g">
+      <div class="num-big g" style="line-height:1;font-family:'Noto Sans JP',sans-serif;font-size:32px;">特許なし</div>
+      <div class="num-label">FRS工法の特許取得状況</div>
+      <h3>「世界初特許」に対抗できていない</h3>
+      <p>CP工法（ハーツリッチ）が2024年に世界初特許を取得。FRS工法は特許なし・ブランド訴求なしで、権威づけの面で大きく遅れている。</p>
+    </div>
+  </div>
+  <div class="band gap-band">
+    <i class="fa-solid fa-bolt" style="margin-right:8px;"></i>この3つを解決できるのは、タカラ産業との関係を持つKohgaだけ。
+  </div>
+</div>
+
+<!-- S3: OPPORTUNITY -->
+<div class="slide" id="s3">
+  <div class="sec-num">02 / OPPORTUNITY</div>
+  <h2>なぜ今が<br>チャンスなのか</h2>
+  <div class="card-grid" id="s3-grid">
+    <div class="opp">
+      <span class="badge tag">MARKET GAP</span>
+      <div class="num-big" style="color:var(--acc2);font-family:'Barlow Condensed',sans-serif;">0</div>
+      <h3>SNSで動画を出しているFRS加盟店</h3>
+      <p>ビフォーアフター動画はTikTok・Reelsで最もバズりやすいコンテンツ。誰もやっていない空白地帯。</p>
+    </div>
+    <div class="opp">
+      <span class="badge tag">EDGE</span>
+      <div class="num-big" style="color:var(--acc2);font-size:40px;">JAGGY</div>
+      <div class="num-label">競合が持てない参入障壁</div>
+      <h3>タカラ産業との関係性は外部が真似できない</h3>
+      <p>血縁関係による本部との信頼基盤は、競合他社が何年かけても構築できない参入障壁。</p>
+    </div>
+    <div class="opp">
+      <span class="badge tag">GLOBAL</span>
+      <div class="num-big" style="color:var(--acc2);font-size:32px;">ASEAN</div>
+      <h3>高温多湿のアジア市場はカビ問題が深刻</h3>
+      <p>タイ・ベトナム・シンガポールは日本基準の安全な除去工法への需要が高い。</p>
+    </div>
+    <div class="opp">
+      <span class="badge tag">TIMING</span>
+      <div class="num-big" style="color:var(--acc3);font-family:'Barlow Condensed',sans-serif;">2026</div>
+      <h3>業界のデジタル化がこれから始まる</h3>
+      <p>今動けば「FRSのデジタル支援はKohga」のポジションを圧倒的に取れる。</p>
+    </div>
+  </div>
+  <div class="band bottom-band">
+    <i class="fa-solid fa-arrow-trend-up" style="margin-right:8px;"></i>業界のデジタル化の波に最初に乗ることで、FRS全体のブランド価値向上をKohgaが主導できる。
+  </div>
+</div>
+
+<!-- S4: WHAT WE DO -->
+<div class="slide" id="s4">
+  <div class="sec-num">03 / WHAT WE DO</div>
+  <h2>Kohgaが提供する<br>3フェーズの支援</h2>
+  <div class="card-grid" id="s4-grid">
+    <div class="phase">
+      <span class="badge ph-tag dim">PHASE 1<br>今すぐ</span>
+      <div class="ph-num dim en">01</div>
+      <h3>集客基盤の構築</h3>
+      <div class="arrow-item">LP制作・リニューアル</div>
+      <div class="arrow-item">ビフォーアフター動画</div>
+      <div class="arrow-item">TikTok / Reels 運用</div>
+      <div class="arrow-item">SEOコンテンツ整備</div>
+      <div class="arrow-item">ATP数値コンテンツ化</div>
+    </div>
+    <div class="phase">
+      <span class="badge ph-tag">PHASE 2<br>3〜6ヶ月</span>
+      <div class="ph-num en">02</div>
+      <h3>全国加盟店への横展開</h3>
+      <div class="arrow-item">統一ブランドガイドライン</div>
+      <div class="arrow-item">SNSテンプレート展開</div>
+      <div class="arrow-item">BtoB営業資料共通化</div>
+      <div class="arrow-item">加盟店デジタル研修</div>
+    </div>
+    <div class="phase">
+      <span class="badge ph-tag">PHASE 3 — 1年〜</span>
+      <div class="ph-num en">03</div>
+      <h3>FRSブランド確立 &amp; 海外展開</h3>
+      <div class="arrow-item">FRS工法ブランドサイトのリニューアル</div>
+      <div class="arrow-item">特許・認証取得のサポート（タカラ産業と協議）</div>
+      <div class="arrow-item">ASEAN向け多言語コンテンツ制作 / 現地パートナー開拓</div>
+    </div>
+  </div>
+  <div class="btm-grid" id="s4-btm">
+    <div class="btm">
+      <h4><i class="fa-solid fa-building" style="margin-right:5px;"></i>BtoB特化戦略</h4>
+      <p>ホテル・食品工場・医療施設への定期契約モデルを構築。個人宅より単価が高く安定収益になる。</p>
+    </div>
+    <div class="btm">
+      <h4><i class="fa-solid fa-flask" style="margin-right:5px;"></i>数値証明コンテンツ</h4>
+      <p>ATP検査の施工前後データを公開。「科学的に根絶を証明する」ブランドポジションを確立する。</p>
+    </div>
+  </div>
+</div>
+
+<!-- S5: WHY KOHGA -->
+<div class="slide" id="s5">
+  <div class="sec-num">04 / WHY KOHGA</div>
+  <h2>Kohgaにしか<br>できない理由</h2>
+  <div class="card-grid" id="s5-grid">
+    <div class="str">
+      <div class="str-head"><div class="icon"><i class="fa-solid fa-handshake"></i></div><h3>タカラ産業との信頼基盤</h3></div>
+      <p>血縁関係による本部との強いコネクション。外部のマーケ会社が「FRS全社への支援をまとめて」は絶対にできない。</p>
+    </div>
+    <div class="str">
+      <div class="str-head"><div class="icon"><i class="fa-solid fa-mobile-screen"></i></div><h3>デジタル × 業界知識の掛け算</h3></div>
+      <p>デジタルスキルとカビ業界の専門知識を組み合わせられる人材が業界にほぼいない。希少性が極めて高い。</p>
+    </div>
+    <div class="str">
+      <div class="str-head"><div class="icon"><i class="fa-solid fa-globe"></i></div><h3>海外展開のビジョンを持っている</h3></div>
+      <p>ASEAN展開まで視野に入れた中長期戦略を描ける。単なる制作会社ではなく「成長パートナー」として機能できる。</p>
+    </div>
+    <div class="str">
+      <div class="str-head"><div class="icon"><i class="fa-solid fa-chart-line"></i></div><h3>集客支援の実績で信頼を積む</h3></div>
+      <p>まず1社での集客成果を作り、全国52社への横展開提案へ。段階的に信頼を積む進め方が長期的な事業基盤を作る。</p>
+    </div>
+  </div>
+  <div class="moat">
+    <div class="moat-title"><i class="fa-solid fa-shield-halved" style="margin-right:6px;"></i>競合が真似できない参入障壁</div>
+    <div class="moat-item"><i class="fa-solid fa-check"></i>タカラ産業との血縁関係</div>
+    <div class="moat-item"><i class="fa-solid fa-check"></i>カビ業界の専門知識</div>
+    <div class="moat-item"><i class="fa-solid fa-check"></i>デジタルマーケティングスキル</div>
+    <div class="moat-item"><i class="fa-solid fa-check"></i>海外展開の視野と加盟店との関係構築速度</div>
+  </div>
+</div>
+
+<!-- S6: ROADMAP -->
+<div class="slide" id="s6">
+  <div class="sec-num">05 / ROADMAP</div>
+  <h2>12ヶ月<br>ロードマップ</h2>
+  <div style="display:flex;flex-direction:column;width:100%;gap:0;">
+  <div class="tl now">
+    <div class="tl-head"><div class="tl-phase en">NOW</div><div class="tl-period">〜3ヶ月</div></div>
+    <div class="tl-body">
+      <h3>集客支援スタート</h3>
+      <div class="tl-item"><i class="fa-solid fa-check" style="color:var(--acc);"></i>Kohga社内でFRS集客支援開始</div>
+      <div class="tl-item"><i class="fa-solid fa-check" style="color:var(--acc);"></i>LP制作・ビフォーアフター動画</div>
+      <div class="tl-item"><i class="fa-solid fa-check" style="color:var(--acc);"></i>SNS（Reels/TikTok）運用開始</div>
+      <div class="tl-item"><i class="fa-solid fa-check" style="color:var(--acc);"></i>業界・施工の現場知識を吸収</div>
+    </div>
+  </div>
+  <div class="tl mid">
+    <div class="tl-head"><div class="tl-phase en">PHASE 2</div><div class="tl-period">3〜6ヶ月</div></div>
+    <div class="tl-body">
+      <h3>実績 → 横展開</h3>
+      <div class="tl-item"><i class="fa-solid fa-arrow-right" style="color:var(--acc3);"></i>集客成果を数値化してタカラ産業に提案</div>
+      <div class="tl-item"><i class="fa-solid fa-arrow-right" style="color:var(--acc3);"></i>全国52社へのブランドガイドライン展開</div>
+      <div class="tl-item"><i class="fa-solid fa-arrow-right" style="color:var(--acc3);"></i>BtoB法人向け営業資料の共通化</div>
+      <div class="tl-item"><i class="fa-solid fa-arrow-right" style="color:var(--acc3);"></i>加盟店向けデジタル研修の実施</div>
+    </div>
+  </div>
+  <div class="tl far">
+    <div class="tl-head"><div class="tl-phase en">PHASE 3</div><div class="tl-period">6〜12ヶ月</div></div>
+    <div class="tl-body">
+      <h3>FRSブランド確立</h3>
+      <div class="tl-item"><i class="fa-solid fa-arrow-right" style="color:var(--acc2);"></i>FRS工法ブランドサイトリニューアル</div>
+      <div class="tl-item"><i class="fa-solid fa-arrow-right" style="color:var(--acc2);"></i>特許・認証取得サポート（タカラ産業と協議）</div>
+      <div class="tl-item"><i class="fa-solid fa-arrow-right" style="color:var(--acc2);"></i>ASEAN展開の初期調査・コンテンツ準備</div>
+      <div class="tl-item"><i class="fa-solid fa-arrow-right" style="color:var(--acc2);"></i>FRS加盟店向け海外版営業資料の整備</div>
+    </div>
+  </div>
+  <div class="tl global">
+    <div class="tl-head"><div class="tl-phase en">GLOBAL</div><div class="tl-period">1年〜</div></div>
+    <div class="tl-body">
+      <h3>海外展開</h3>
+      <div class="tl-item"><i class="fa-solid fa-plane" style="color:var(--acc2);"></i>タイ・ベトナム市場への参入</div>
+      <div class="tl-item"><i class="fa-solid fa-plane" style="color:var(--acc2);"></i>現地パートナー開拓・実証実験</div>
+      <div class="tl-item"><i class="fa-solid fa-plane" style="color:var(--acc2);"></i>多言語対応コンテンツ・LP展開</div>
+      <div class="tl-item"><i class="fa-solid fa-plane" style="color:var(--acc2);"></i>インバウンド向けホテル・施設への展開</div>
+    </div>
+  </div>
+  <div class="band vision-band">
+    <i class="fa-solid fa-rocket"></i>
+    <p>最終ゴール：KohgaがFRSブランドのマーケティング本部機能を担う存在になる</p>
+  </div>
+  </div><!-- /flex wrapper -->
+</div>
+
+<!-- S7: NEXT ACTION -->
+<div class="slide" id="s7">
+  <div class="sec-num">06 / NEXT ACTION</div>
+  <h2>まず動くこと、<br>3つ</h2>
+  <div class="card-grid" id="s7-grid">
+    <div class="act">
+      <div class="act-num en">01</div>
+      <h3>現状ヒアリング（Kohga × タカラ産業）</h3>
+      <p>「全国加盟店のデジタル支援」に課題感を持っているか確認。現状の加盟店サポート体制・予算感をヒアリングする。</p>
+    </div>
+    <div class="act">
+      <div class="act-num en">02</div>
+      <h3>1社でのパイロット集客支援を開始する</h3>
+      <p>まずLP・SNS運用を開始し、3ヶ月で集客成果を作る。「実績」が全国展開の最大の説得材料になる。</p>
+    </div>
+    <div class="act">
+      <div class="act-num en">03</div>
+      <h3>FRSブランド全体の課題を可視化する</h3>
+      <p>全国52社のHP・SNS状況を簡易スコアリングし「どれだけデジタルが弱いか」のレポートを作成。タカラ産業への提案書の核心になる。</p>
+    </div>
+  </div>
+  <div class="cta">
+    <p>「FRS工法を全国ブランドにする」——その主役になれるのは、今のKohgaだけです。</p>
+    <div class="arr en">→</div>
+  </div>
+</div>
+
+</div><!-- /deck -->
+
+<script>
+const slides = Array.from(document.querySelectorAll('.slide'));
+const total = slides.length;
+let cur = 0;
+let startX = 0, startY = 0, moved = false;
+
+// ドット生成
+const dotsEl = document.getElementById('dots');
+slides.forEach((_, i) => {
+  const d = document.createElement('div');
+  d.className = 'dot' + (i === 0 ? ' on' : '');
+  d.onclick = () => goTo(i);
+  dotsEl.appendChild(d);
+});
+
+function goTo(n) {
+  if (n < 0 || n >= total || n === cur) return;
+  const forward = n > cur;
+  const prev = cur;
+
+  // 現在スライドを退場
+  slides[prev].classList.remove('on');
+  slides[prev].style.transform = forward ? 'translateX(-60%)' : 'translateX(100%)';
+  slides[prev].style.opacity = '0';
+  slides[prev].style.pointerEvents = 'none';
+  setTimeout(() => {
+    slides[prev].style.transform = '';
+    slides[prev].style.opacity = '';
+  }, 400);
+
+  // 次スライドを登場
+  slides[n].style.transition = 'none';
+  slides[n].style.transform = forward ? 'translateX(100%)' : 'translateX(-60%)';
+  slides[n].style.opacity = '0';
+  slides[n].style.pointerEvents = 'none';
+  slides[n].offsetHeight; // reflow
+  slides[n].style.transition = '';
+  slides[n].classList.add('on');
+  slides[n].style.transform = '';
+  slides[n].style.opacity = '';
+  slides[n].style.pointerEvents = '';
+  slides[n].scrollTop = 0;
+
+  cur = n;
+  updateUI();
+}
+
+function updateUI() {
+  document.getElementById('pbar').style.width = ((cur + 1) / total * 100).toFixed(1) + '%';
+  document.getElementById('counter').textContent = (cur + 1) + ' / ' + total;
+  document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('on', i === cur));
+}
+
+let hintHidden = false;
+function hideHint() {
+  if (!hintHidden) { document.getElementById('hint').classList.add('hide'); hintHidden = true; }
+}
+setTimeout(hideHint, 3000);
+
+// タッチ
+const deck = document.getElementById('deck');
+deck.addEventListener('touchstart', e => {
+  startX = e.touches[0].clientX;
+  startY = e.touches[0].clientY;
+  moved = false;
+}, { passive: true });
+
+deck.addEventListener('touchmove', e => { moved = true; }, { passive: true });
+
+deck.addEventListener('touchend', e => {
+  if (!moved) return;
+  const dx = e.changedTouches[0].clientX - startX;
+  const dy = e.changedTouches[0].clientY - startY;
+  if (Math.abs(dy) > Math.abs(dx) * 1.2) return; // 縦スクロール優先
+  if (Math.abs(dx) < 44) return;
+  hideHint();
+  if (dx < 0) goTo(cur + 1);
+  else goTo(cur - 1);
+}, { passive: true });
+
+// キーボード
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { hideHint(); goTo(cur + 1); }
+  if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { hideHint(); goTo(cur - 1); }
+});
+
+// カード高さ均一化（縦並び同士を同じ高さに）
+function equalizeGroup(selector) {
+  const items = Array.from(document.querySelectorAll(selector));
+  if (items.length < 2) return;
+  items.forEach(el => el.style.height = '');
+  const maxH = Math.max(...items.map(el => el.offsetHeight));
+  items.forEach(el => el.style.height = maxH + 'px');
+}
+function equalizeAll() {
+  equalizeGroup('#s2-grid .box');
+  equalizeGroup('#s3-grid .opp');
+  equalizeGroup('#s4-grid .phase');
+  equalizeGroup('#s4-btm .btm');
+  equalizeGroup('#s5-grid .str');
+  equalizeGroup('#s7-grid .act');
+}
+
+updateUI();
+document.fonts.ready.then(equalizeAll);
+window.addEventListener('resize', equalizeAll);
+</script>
+</body>
+</html>

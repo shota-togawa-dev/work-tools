@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 224 178" role="img" aria-labelledby="title desc">
+  <title id="title">KOHGA logo</title>
+  <desc id="desc">Blue architectural panel and house line mark with KOHGA lettering.</desc>
+  <rect width="224" height="178" fill="none"/>
+  <g transform="translate(22 0)">
+    <path d="M22 1h33v86l-33-10z" fill="#44aee8"/>
+    <path d="M40 82V43l48-36" fill="none" stroke="#050505" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M74 85V42l43-31 47 36v70H74z" fill="none" stroke="#050505" stroke-width="6" stroke-linejoin="round"/>
+    <rect x="106" y="60" width="16" height="16" fill="#73777a"/>
+    <rect x="129" y="60" width="16" height="16" fill="#8d9295"/>
+    <rect x="106" y="83" width="16" height="16" fill="#55585b"/>
+    <rect x="129" y="83" width="16" height="16" fill="#b5b9bb"/>
+  </g>
+  <g fill="#050505" transform="translate(0 122)">
+    <path d="M0 0h7v18L20 0h8L13 20l16 32h-8L9 27l-2 3v22H0z"/>
+    <path d="M44 8c0-5 4-8 10-8h7c6 0 10 3 10 8v36c0 5-4 8-10 8h-7c-6 0-10-3-10-8zm7 35c0 2 1 3 4 3h5c3 0 4-1 4-3V9c0-2-1-3-4-3h-5c-3 0-4 1-4 3z"/>
+    <path d="M91 0h7v22h15V0h7v52h-7V28H98v24h-7z"/>
+    <path d="M140 8c0-5 4-8 10-8h7c6 0 10 3 10 8v9h-7V9c0-2-1-3-4-3h-5c-3 0-4 1-4 3v34c0 2 1 3 4 3h5c3 0 4-1 4-3V29h-9v-6h16v21c0 5-4 8-10 8h-7c-6 0-10-3-10-8z"/>
+    <path d="M199 0h9l13 52h-7l-3-13h-15l-3 13h-7zm10 33-6-25-6 25z"/>
+  </g>
+</svg>
